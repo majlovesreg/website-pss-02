@@ -81,7 +81,7 @@ cite {
   background: url('https://source.unsplash.com/collection/7282015') no-repeat center center fixed;
   opacity: 0;
   background-size: cover;
-  animation: easein 1s ease-in 1s;
+  animation: easein 1s ease-in 1s 1 normal forwards running;
   position: absolute;
   z-index: -10;
 }
