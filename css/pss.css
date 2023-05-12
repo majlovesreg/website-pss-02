@@ -75,19 +75,23 @@ cite {
   text-align: center;
 }
 
+.highlight {
+  color: #E8A013;
+}
+
 a:link {
   text-decoration: none;
-  color:#E8A013;
+  color: #E8A013;
 }
 
 a:visited {
   text-decoration: none;
-  color:#E8A013;
+  color: #E8A013;
 }
 
 a:hover {
   text-decoration: underline;
-  color:#E8A013;
+  color: #E8A013;
 }
 
 a.button {
