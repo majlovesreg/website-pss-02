@@ -11,6 +11,7 @@ html, body, h1, p, a, div, section {
 
 body {
   background-image: url(https://source.unsplash.com/collection/7282015);
+  transition: background-image 1s;
   background-color:#464646;
   background-position: center bottom;
   background-repeat: no-repeat;
