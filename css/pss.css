@@ -1,0 +1,105 @@
+html, body, .container {
+    height: 100%;
+}
+
+html, body, h1, p, a, div, section {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  font: inherit;
+}
+
+body {
+  background-image: url(https://source.unsplash.com/collection/1459961);
+  background-color:#464646;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  font: 18px/23px "Cantarell", sans-serif;
+  color: #fff;
+}
+
+h1 {
+  color: #fff;
+  font-size: 40px;
+  line-height: 50px;
+  font-weight: 400;
+  margin-top: 20px;
+  background-color: rgba(100, 100, 100, 0.35);
+  display: block;
+}
+
+p {
+  margin: 0 0 15px 0;
+}
+
+strong {
+  font-weight: 700;
+}
+
+blockquote {
+  display: block;
+  max-width: 480px;
+  margin: 15px auto;
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.5);  
+  color: #e1e1e1;
+  font-family: "Kotta One", serif;
+  font-size: 22px;
+  line-height: 28px;
+}
+
+cite {
+  display: block;
+  font: 18px/23px "Cantarell", sans-serif;
+  font-size: 16px;
+  margin-top: 16px;
+  color: #cccccc;
+  text-transform: uppercase;
+}
+
+.container {
+  width: 100%;
+  position: relative;
+  display: table;
+  float: left;
+  vertical-align: baseline;
+  margin: 0 auto;
+  padding: 80px 0 0 0;
+}
+
+.content {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+a:link {
+  text-decoration: none;
+  color:#E8A013;
+}
+
+a:visited {
+  text-decoration: none;
+  color:#E8A013;
+}
+
+a:hover {
+  text-decoration: underline;
+  color:#E8A013;
+}
+
+a.button {
+  color: #CAFAEA;
+}
+
+a:hover.button {
+  text-decoration: none;
+  background-color: rgba(55, 172, 80, 0.8);
+}
+
+a:active.button {
+  text-decoration: none;
+  background-color: rgba(75, 192, 110, 0.8);
+}
