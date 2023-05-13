@@ -1,3 +1,5 @@
+document.getElementById('bk').style.animationPlayState = 'paused';
+
 document.addEventListener('DOMContentLoaded', function() {
    animateRun();
 }, false);
