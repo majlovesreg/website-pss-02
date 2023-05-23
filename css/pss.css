@@ -12,6 +12,7 @@ html, body, h1, p, a, div, section {
 body {
   font: 18px/23px "Cantarell", sans-serif;
   color: #fff;
+  background-color: #dedede;
 }
 
 h1 {
