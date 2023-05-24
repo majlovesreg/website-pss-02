@@ -1,0 +1,15 @@
+[
+  {
+    "locale": "en",
+    "pageTitle": "2023 PSS Textbook Download",
+    "welcome": {
+      "message": "This is where PSS students can download their textbooks.\n\nAre you a PSS student for ENG-01 this year?",
+      "buttonYes": "Yes, I am",
+      "buttonNo": "Nope, just visiting."
+    },
+    "notWelcome": {
+      "message": "Thanks for dropping by.\nSee you next time when it’s your turn. 🙂",
+      "buttonOK": "Sure, looking forward to it"
+    }
+  }
+]
