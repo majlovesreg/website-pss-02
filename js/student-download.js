@@ -4,7 +4,7 @@ var DATASOURCE = [];
 window.addEventListener('DOMContentLoaded', () => {
 
   fetch( 
-    'data/2023_SLV.json', {
+    'data/2023_SLV.json?v=0.0.1', {
       method: "GET",
       mode: "cors",
       cache: "no-cache",
@@ -243,7 +243,7 @@ function question(qNum, qPrev) {
       document.getElementById('authFailedName').innerHTML = name;
       document.getElementById('authFailedCode').innerHTML = code;
 
-      postData('/download/verifier', name, code).then( (json) => verifyData(json) );
+      postData('student/download', name, code).then( (json) => verifyData(json) );
     
     }, { once: false } );
 
