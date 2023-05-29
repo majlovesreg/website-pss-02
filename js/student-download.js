@@ -1,11 +1,29 @@
 var LOCALE = 'en';
 var DATASOURCE = [];
 
-fetch("data/2023_SLV.json?v=0.0.1").then(response => response.json()).then(jsonObj => DATASOURCE = jsonObj);
+window.addEventListener('DOMContentLoaded', () => {
 
-window.onload = () => main();
+  fetch( 
+    'data/2023_SLV.json', {
+      method: "GET",
+      mode: "cors",
+      cache: "no-cache",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      redirect: "error",
+      referrerPolicy: "strict-origin-when-cross-origin" 
+    }
 
-function main() {  
+  )
+  .then( response => response.json() )
+  .then( jsonObj => DATASOURCE = jsonObj )
+  .then( () => main() );
+  
+});
+
+function main() {
   
   createForm();
   updateText();
