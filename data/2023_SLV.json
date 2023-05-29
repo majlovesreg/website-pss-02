@@ -4,12 +4,64 @@
     "pageTitle": "2023 PSS Textbook Download",
     "welcome": {
       "message": "This is where PSS students can download their textbooks.\n\nAre you a PSS student for ENG-01 this year?",
-      "buttonYes": "Yes, I am",
-      "buttonNo": "Nope, just visiting."
+      "welcomeButtonYes": "Yes, I am",
+      "welcomeButtonNo": "Nope, just checking"
     },
     "notWelcome": {
       "message": "Thanks for dropping by.\nSee you next time when it’s your turn. 🙂",
-      "buttonOK": "Sure, looking forward to it"
+      "notWelcomeButtonOK": "Sure, looking forward to it"
+    },
+    "authFailed": {
+      "msgError": "Hmmm… Looks like there was an error in what you submitted.",
+      "msgRepeat": "Kindly check again that your <strong>name</strong> and <strong>code</strong> are typed exactly as in your invitation letter.",
+      "table": {
+        "authFailedNameLabel": "Name",
+        "authFailedCodeLabel": "Code"
+      },
+      "authFailedButtonOK": "Oops, let me change that"
+    },
+    "questions": {
+      1: {
+        "innerText": "What’s your name?",
+        "placeholder": "Your name in the invitation …",
+        "type": "text",
+        "name": "name"
+      },
+      2: {
+        "innerText": "Please enter your unique access code.",
+        "placeholder": "The code is also in the invitation …",
+        "type": "text",
+        "name": "code"
+      }
+    },
+    "buttons": {
+      "back": {
+        "innerText": "Back",
+        "type": "button",
+        "id": "buttonBack",
+        "style": {
+          "visibility": "hidden",
+          "display": "none"
+        }
+      },
+      "next": {
+        "innerText": "Next",
+        "type": "button",
+        "id": "buttonNext",
+        "style": {
+          "visibility": "hidden",
+          "display": "none"
+        }
+      },
+      "submit": {
+        "innerText": "Submit",
+        "type": "submit",
+        "id": "buttonSubmit",
+        "style": {
+          "visibility": "none",
+          "display": "none"
+        }
+      }
     }
   }
 ]

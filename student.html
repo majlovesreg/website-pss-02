@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>PSS Textbook Download</title>
+		<link rel="stylesheet" href="css/student-download.css">
+		<link rel="preload" as="fetch" crossorigin="anonymous" type="application/json" href="data/2023_SLV.json">
+		<script src="js/script.js" defer></script>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=fallback"/>
+	</head>
+
+	<body>
+
+		<noscript>
+			Your browser is not running Javascript. Are you OK if the webpage looks like a 90’s throwback?
+		</noscript>
+
+		<div id="divMain" class="container center">
+			
+			<div id="welcome">
+				<h1 id="pageTitle">PSS Textbook Download</h1>
+				<p id="welcomeMessage">Hi! If you see this message, then the form data did not load properly. Please contact Maj to report the issue.</p>
+				<button id="welcomeButtonNo" type="button" class="transparent">No</button>
+				<button id="welcomeButtonYes" type="button">Yes</button>
+			</div>
+
+			<div id="notWelcome">
+				<p id="notWelcomeMessage"></p>
+				<button id="notWelcomeButtonOK" type="button">OK</button>
+			</div>
+			
+			<form id="formMain" action="/403.html" method="post" autocomplete="off"></form>
+
+			<div id="authFailed">
+			
+				<p id="authFailedMsgError"></p>
+				
+				<div class="overflow-x-auto">
+					<table>
+						<tbody>
+							<tr>
+								<td id="authFailedNameLabel">Name</td>
+								<td id="authFailedName" class="strong"></td>
+								<td id="authFailedNameIcon"></td>
+							</tr>
+							<tr>
+								<td id="authFailedCodeLabel">Code</td>
+								<td id="authFailedCode" class="strong"></td>
+								<td id="authFailedCodeIcon"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				
+				<p id="authFailedMsgRepeat">Kindly check again that your <strong>name</strong> and <strong>code</strong> are typed exactly as in your invitation letter.</p>
+
+				<button id="authFailedButtonOK" type="button">OK</button>
+
+			</div>
+			
+			<div class="spacer"></div>
+
+		</div>
+
+	</body>
+
+</html>
