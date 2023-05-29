@@ -1,7 +1,7 @@
 var LOCALE = 'en';
 var DATASOURCE = [];
 
-fetch("data/2023_SLV.json").then(response => response.json()).then(jsonObj => DATASOURCE = jsonObj);
+fetch("data/2023_SLV.json?v=0.0.1").then(response => response.json()).then(jsonObj => DATASOURCE = jsonObj);
 
 window.onload = () => main();
 
@@ -287,12 +287,20 @@ async function postData(url, name, code) {
         code
       })
     
-    }).catch( e => { return { 'error': e } } );
+    }).catch( e => { console.log(e); return { 'error': e } } );
+
+    if (!response.ok) {
+
+      console.log(response.status);
+      return { 'error': response.status };
+    
+    };
 
     return response.json();
 
   } catch(e) {
 
+    console.log(e);
     return { 'error': e };
   
   };
