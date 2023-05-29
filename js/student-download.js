@@ -1,13 +1,11 @@
 var LOCALE = 'en';
 var DATASOURCE = [];
 
+fetch("data/2023_SLV.json").then(response => response.json()).then(jsonObj => DATASOURCE = jsonObj);
+
 window.onload = () => main();
 
-function main() {
-  
-  fetch("data/2023_SLV.json")
-    .then(response => response.json())
-    .then(jsonObj => DATASOURCE = jsonObj);  
+function main() {  
   
   createForm();
   updateText();

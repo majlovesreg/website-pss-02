@@ -21,13 +21,13 @@
       "authFailedButtonOK": "Oops, let me change that"
     },
     "questions": {
-      1: {
+      "1": {
         "innerText": "What’s your name?",
         "placeholder": "Your name in the invitation …",
         "type": "text",
         "name": "name"
       },
-      2: {
+      "2": {
         "innerText": "Please enter your unique access code.",
         "placeholder": "The code is also in the invitation …",
         "type": "text",
