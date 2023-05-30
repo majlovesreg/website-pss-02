@@ -330,8 +330,6 @@ async function postData(url, name, code) {
 
 function verifyData(json) {
 
-  alert(JSON.stringify(json, null, 2));
-
   switch(json.auth) {
 
     case 'OK':
@@ -368,7 +366,8 @@ function verifyData(json) {
 
     default:
 
-      window.location.assign('/403.html');
+      alert('Oops, there was an error! Can you please report the code below to Maj? 😅\n\n' + JSON.stringify(json, null, 2));
+      window.location.reload();
 
       break;
 
