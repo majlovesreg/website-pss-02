@@ -342,6 +342,8 @@ function verifyData(json) {
 
       moveIn( document.getElementById('authFailed') );
 
+      document.getElementById('authFailedButtonOK').focus();
+
       let element;
 
       element = document.getElementById('authFailedName');
@@ -368,8 +370,6 @@ function verifyData(json) {
 
       alert('Oops, there was an error! Can you please report the code below to Maj? 😅\n\n' + JSON.stringify(json, null, 2));
       window.location.reload();
-
-      break;
 
   };
 
