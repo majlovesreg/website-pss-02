@@ -307,14 +307,16 @@ async function postData(url, name, code) {
     
     }).catch( e => { console.log(e); return { 'error': e } } );
 
-    if (!response.ok) {
+    if (response.ok) {
+
+      return response.json();
+          
+    } else {
 
       console.log(response.status);
       return { 'error': response.status };
-    
-    };
 
-    return response.json();
+    };
 
   } catch(e) {
 
@@ -327,14 +329,6 @@ async function postData(url, name, code) {
 
 
 function verifyData(json) {
-
-  json = {
-    "auth": "failed",
-    "result": {
-      "name": false,
-      "code": true
-    }
-  }
 
   switch(json.auth) {
 
@@ -361,6 +355,12 @@ function verifyData(json) {
 
       element = document.getElementById('authFailedCodeIcon');
       json.result.code ? element.innerHTML = '🆗' : element.innerHTML = '❌';
+
+      break;
+
+    case '403':
+
+      window.location.assign('/403.html');
 
       break;
 
