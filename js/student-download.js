@@ -330,6 +330,8 @@ async function postData(url, name, code) {
 
 function verifyData(json) {
 
+  alert(JSON.stringify(json, null, 2))
+
   switch(json.auth) {
 
     case 'OK':
