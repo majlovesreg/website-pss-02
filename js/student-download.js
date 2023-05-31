@@ -227,6 +227,9 @@ function question(qNum, qPrev) {
     // Submit form //
     /////////////////
 
+    let submitURL = ( window.location.hostname == 'localhost' ) ? 'http://localhost:8787' : 'student/download'; // ON PRODUCTION: Remove
+    // let submitURL = 'student/download';
+
     removeAllListeners( document.getElementById('formMain'), 'submit' );
     addListener( document.getElementById('formMain'), 'submit', event => {
 
@@ -243,7 +246,7 @@ function question(qNum, qPrev) {
       document.getElementById('authFailedName').innerHTML = name;
       document.getElementById('authFailedCode').innerHTML = code;
 
-      postData('student/download', name, code).then( (json) => verifyData(json) );
+      postData( submitURL, name, code).then( (json) => verifyData(json) );
     
     }, { once: false } );
 
@@ -288,16 +291,21 @@ async function postData(url, name, code) {
 
   try {
 
+    let mode = ( window.location.hostname == 'localhost' ) ? 'cors' : 'same-origin'; // ON PRODUCTION: Remove
+    // let mode = 'same-origin';
+    let redirect = ( window.location.hostname == 'localhost' ) ? 'follow' : 'error'; // ON PRODUCTION: Remove
+    // let redirect = 'error';
+
     const response = await fetch(url, {
     
       method: "POST",
-      mode: "same-origin",
+      mode: mode,
       cache: "no-cache",
       credentials: "same-origin",
       headers: {
         "Content-Type": "application/json"
       },
-      redirect: "error",
+      redirect: redirect,
       referrerPolicy: "strict-origin-when-cross-origin",
 
       body: JSON.stringify({
@@ -305,25 +313,12 @@ async function postData(url, name, code) {
         code
       })
     
-    }).catch( e => { console.log(e); return { 'error': e } } );
+    })
+    .catch( e => { throw new Error( 'Fetch POST error: ' + e ) } );
 
-    if (response.ok) {
+    return response.json();
 
-      return response.json();
-          
-    } else {
-
-      console.log(response.status);
-      return { 'error': response.status };
-
-    };
-
-  } catch(e) {
-
-    console.log(e);
-    return { 'error': e };
-  
-  };
+  } catch(e) { throw new Error( 'Try-fetch failed: ' + e ) };
 
 };
 
