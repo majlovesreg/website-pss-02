@@ -287,7 +287,7 @@ function question(qNum, qPrev) {
 async function postData(url, name, code) {
 
   name = name.replace(/\s\s+/g, ' ').trim().toUpperCase();
-  code = code.replace(/\s\s+/g, ' ').trim().toUpperCase();
+  code = code.replace(/\s+/g, '').toUpperCase();
 
   try {
 
