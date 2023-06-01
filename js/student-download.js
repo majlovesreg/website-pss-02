@@ -387,10 +387,9 @@ function verifyData(json) {
     
       // Load default download
 
-      let dl = files
-        .filter( obj => Object.keys(obj)[0] === selectionLanguage.value )
-        .filter( obj => Object.keys(obj)[0].format === selectionFormat.value)
-        .map( obj => obj[Object.keys(obj)[0]] )[0];
+      let dl = files.filter( obj => {
+        return Object.keys(obj)[0] === selectionLanguage.value &&
+        obj[selectionLanguage.value].format === selectionFormat.value } )[0][selectionLanguage.value];
 
       let buttonDownload = document.getElementById('authOKButtonDownload');
 
