@@ -230,3 +230,24 @@ div#authFailed {
 .overflow-x-auto {
   overflow-x: auto;
 }
+
+select {
+  text-align: center;
+  font-size: 25px;
+  padding: 5px 15px;
+  margin: 0 0 50px 0;
+  display: inline-block;
+  border: 3px solid #ccc;
+  border-radius: 4px;
+  transition: 0.5s;
+}
+
+label {
+  display: block;
+  margin-bottom: 15px;
+}
+
+label:after {
+    content:'';
+    display: block; 
+}

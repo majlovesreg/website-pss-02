@@ -329,7 +329,75 @@ function verifyData(json) {
 
     case 'OK':
 
-      // Do OK
+      let files = JSON.parse(json.result);
+
+      let languageCode = [];
+
+      for ( let i = 0; i < files.length; i++ ) languageCode.push( Object.keys(files[i])[0] );
+
+      languageCode = [ ...new Set(languageCode) ]; // Just get unique values
+
+      let selectionLanguage = document.getElementById('authOKSelectionLanguage');
+      let selectionFormat = document.getElementById('authOKSelectionFormat');
+
+      // Load languages
+      for ( let i = 0; i < languageCode.length; i++ ) {
+
+        let language = files.filter( obj => Object.keys(obj)[0] === languageCode[i] )[0][languageCode[i]].language; // Use node
+
+        let option = document.createElement("option");
+        option.innerHTML = language;
+        option.value = languageCode[i];
+
+        selectionLanguage.add(option);
+      
+      };
+
+      // Load formats of default language
+      let formats = files.filter( obj => Object.keys(obj)[0] === selectionLanguage.value ).map( obj => obj[selectionLanguage.value].format );
+
+      for ( let i = 0; i < formats.length; i++ ) {
+
+        let option = document.createElement("option");
+        option.innerHTML = formats[i];
+        option.value = formats[i];
+
+        selectionFormat.add(option);
+
+      };
+
+      // Change format choices on change of language selection
+      selectionLanguage.addEventListener('change', () => {
+
+          selectionFormat.innerHTML = '';
+
+          let formats = files.filter( obj => Object.keys(obj)[0] === selectionLanguage.value ).map( obj => obj[selectionLanguage.value].format );
+
+          for ( let i = 0; i < formats.length; i++ ) {
+
+            let option = document.createElement("option");
+            option.innerHTML = formats[i];
+            option.value = formats[i];
+
+            selectionFormat.add(option);
+
+          };
+        
+      });
+    
+      // Load default download
+
+      let dl = files
+        .filter( obj => Object.keys(obj)[0] === selectionLanguage.value )
+        .filter( obj => Object.keys(obj)[0].format === selectionFormat.value)
+        .map( obj => obj[Object.keys(obj)[0]] )[0];
+
+      let buttonDownload = document.getElementById('authOKButtonDownload');
+
+      console.log(JSON.stringify(dl));
+
+      buttonDownload.innerHTML = 'Download ' + dl.title;
+
 
       break;
 
