@@ -331,71 +331,26 @@ function verifyData(json) {
 
       let files = JSON.parse(json.result);
 
-      let languageCode = [];
-
-      for ( let i = 0; i < files.length; i++ ) languageCode.push( Object.keys(files[i])[0] );
-
-      languageCode = [ ...new Set(languageCode) ]; // Just get unique values
-
       let selectionLanguage = document.getElementById('authOKSelectionLanguage');
       let selectionFormat = document.getElementById('authOKSelectionFormat');
+      let buttonDownload = document.getElementById('authOKButtonDownload');
 
-      // Load languages
-      for ( let i = 0; i < languageCode.length; i++ ) {
+      loadLanguages(files, selectionLanguage);
+      loadFormats(files, selectionLanguage, selectionFormat);
+      loadButtonDownload(files, selectionLanguage, selectionFormat, buttonDownload);
 
-        let language = files.filter( obj => Object.keys(obj)[0] === languageCode[i] )[0][languageCode[i]].language; // Use node
-
-        let option = document.createElement("option");
-        option.innerHTML = language;
-        option.value = languageCode[i];
-
-        selectionLanguage.add(option);
+      // Change selectionFormat and buttonDownload on change of selectionLanguage
       
-      };
-
-      // Load formats of default language
-      let formats = files.filter( obj => Object.keys(obj)[0] === selectionLanguage.value ).map( obj => obj[selectionLanguage.value].format );
-
-      for ( let i = 0; i < formats.length; i++ ) {
-
-        let option = document.createElement("option");
-        option.innerHTML = formats[i];
-        option.value = formats[i];
-
-        selectionFormat.add(option);
-
-      };
-
-      // Change format choices on change of language selection
       selectionLanguage.addEventListener('change', () => {
 
           selectionFormat.innerHTML = '';
+          loadFormats(files, selectionLanguage, selectionFormat);
 
-          let formats = files.filter( obj => Object.keys(obj)[0] === selectionLanguage.value ).map( obj => obj[selectionLanguage.value].format );
-
-          for ( let i = 0; i < formats.length; i++ ) {
-
-            let option = document.createElement("option");
-            option.innerHTML = formats[i];
-            option.value = formats[i];
-
-            selectionFormat.add(option);
-
-          };
+          buttonDownload.innerHTML = '';
+          loadButtonDownload(files, selectionLanguage, selectionFormat, buttonDownload);
         
       });
     
-      // Load default download
-
-      let dl = files.filter( obj => {
-        return Object.keys(obj)[0] === selectionLanguage.value &&
-        obj[selectionLanguage.value].format === selectionFormat.value } )[0][selectionLanguage.value];
-
-      let buttonDownload = document.getElementById('authOKButtonDownload');
-
-      console.log(JSON.stringify(dl));
-
-      buttonDownload.innerHTML = 'Download ' + dl.title;
 
 
       break;
@@ -434,6 +389,59 @@ function verifyData(json) {
       window.location.reload();
 
   };
+
+};
+
+
+function loadLanguages(files, selectionLanguage) {
+
+  let languageCode = [];
+
+  // Get language codes
+  for ( let i = 0; i < files.length; i++ ) languageCode.push( Object.keys(files[i])[0] );
+
+  // Just get unique values
+  languageCode = [ ...new Set(languageCode) ];
+
+  for ( let i = 0; i < languageCode.length; i++ ) {
+
+    let language = files.filter( obj => Object.keys(obj)[0] === languageCode[i] )[0][languageCode[i]].language; // Use node
+
+    let option = document.createElement("option");
+    option.innerHTML = language;
+    option.value = languageCode[i];
+
+    selectionLanguage.add(option);
+  
+  };
+
+};
+
+
+function loadFormats(files, selectionLanguage, selectionFormat) {
+
+  let formats = files.filter( obj => Object.keys(obj)[0] === selectionLanguage.value ).map( obj => obj[selectionLanguage.value].format );
+
+  for ( let i = 0; i < formats.length; i++ ) {
+
+    let option = document.createElement("option");
+    option.innerHTML = formats[i];
+    option.value = formats[i];
+
+    selectionFormat.add(option);
+
+  };
+
+};
+
+
+function loadButtonDownload(files, selectionLanguage, selectionFormat, buttonDownload) {
+
+  let dl = files.filter( obj => {
+    return Object.keys(obj)[0] === selectionLanguage.value &&
+    obj[selectionLanguage.value].format === selectionFormat.value } )[0][selectionLanguage.value];
+
+  buttonDownload.innerHTML = 'Download ' + dl.format + '<br>' + dl.title;
 
 };
 
