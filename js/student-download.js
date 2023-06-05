@@ -4,7 +4,7 @@ var DATASOURCE = [];
 window.addEventListener('DOMContentLoaded', () => {
 
   fetch( 
-    'data/2023_SLV.json?v=1.0.0-beta1.0.3', {
+    'data/2023_SLV.json?v=1.0.0-beta1.0.4', {
       method: "GET",
       mode: "same-origin", // ON PRODUCTION: same-origin. ON DEV: cors.
       // cache: "no-cache",
