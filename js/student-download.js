@@ -6,7 +6,7 @@ window.addEventListener('DOMContentLoaded', () => {
   fetch( 
     'data/2023_SLV.json?v=1.0.0-beta1.0.5', {
       method: "GET",
-      mode: "same-origin", // ON PRODUCTION: same-origin. ON DEV: cors.
+      mode: "no-cors", // ON PRODUCTION: no-cors. ON DEV: cors.
       cache: "no-cache",
       credentials: "same-origin",
       headers: {
