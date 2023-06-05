@@ -4,7 +4,7 @@ var DATASOURCE = [];
 window.addEventListener('DOMContentLoaded', () => {
 
   fetch( 
-    'data/2023_SLV.json?v=1.0.0-beta1.0.4', {
+    'data/2023_SLV.json?v=1.0.0-beta1.0.5', {
       method: "GET",
       mode: "same-origin", // ON PRODUCTION: same-origin. ON DEV: cors.
       // cache: "no-cache",
@@ -145,7 +145,14 @@ function updateText(locale) {
   document.getElementById('authOKPlaceholderLanguage').innerHTML = data.authOK.placeholderLanguage;
   document.getElementById('authOKPlaceholderFormat').innerHTML = data.authOK.placeholderFormat;
 
-  downloadText = data.authOK.downloadText;
+  // Update download button
+  let buttonDownload = document.getElementById('authOKButtonDownload');
+  if ( downloadText !== data.authOK.downloadText ) {
+    try {
+      buttonDownload.innerHTML = buttonDownload.innerHTML.replace( downloadText, data.authOK.downloadText );
+      downloadText = data.authOK.downloadText;
+    } catch(e) { console.log('Update download button error: ' + e) };
+  };
   
   let authOKMessage = document.getElementById('authOKMessage');
   let name = document.querySelector('input[name=name]');
