@@ -293,6 +293,7 @@ label:after {
 p#downloadTimer {
   font-size: 16px;
   color: #888;
+  margin: 10px auto 30px auto;
 }
 
 select:invalid, select.placeholder { 
