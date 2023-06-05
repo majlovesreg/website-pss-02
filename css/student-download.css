@@ -85,6 +85,7 @@ p {
 
 .spacer {
   flex-grow: 0.5;
+  height: 30px;
 }
 
 input[type=text] {
@@ -194,7 +195,7 @@ button {
   user-select: none;
   touch-action: manipulation;
   white-space: nowrap;
-  margin: auto 7px 30px 7px;
+  margin: auto 7px 20px 7px;
 }
 
 button:disabled {
