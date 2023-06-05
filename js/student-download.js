@@ -481,7 +481,7 @@ function loadButtonDownload(files, selectionLanguage, selectionFormat, buttonDow
     return Object.keys(obj)[0] === selectionLanguage.value &&
     obj[selectionLanguage.value].format === selectionFormat.value } )[0][selectionLanguage.value];
 
-  buttonDownload.innerHTML = ' ' + dl.format + '<br>' + dl.title;
+  buttonDownload.innerHTML = downloadText + ' ' + dl.format + '<br>' + dl.title;
 
   removeAllListeners(buttonDownload, 'click');
   addListener( buttonDownload, 'click', () => window.open(dl.path) );
