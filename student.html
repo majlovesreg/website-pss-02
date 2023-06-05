@@ -8,9 +8,9 @@
 		<title>PSS Textbook Download</title>
 		
 		<link rel="icon" href="favicon.svg?v=1.0.0" sizes="any" type="image/svg+xml">
-		<link rel="stylesheet" href="css/student-download.css?v=0.0.1">
-		<link rel="preload" as="fetch" type="application/json" href="data/2023_SLV.json?v=0.0.1" crossorigin="anonymous">
-		<script src="js/student-download.js?v=0.0.4" defer></script>
+		<link rel="stylesheet" href="css/student-download.css?v=1.0.0-beta1">
+		<link rel="preload" as="fetch" type="application/json" href="data/2023_SLV.json?v=1.0.0-beta1" crossorigin="anonymous">
+		<script src="js/student-download.js?v=1.0.0-beta1" defer></script>
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=fallback"/>
 	</head>
 
@@ -57,23 +57,26 @@
 					</table>
 				</div>
 				
-				<p id="authFailedMsgRepeat">Kindly check again that your <strong>name</strong> and <strong>code</strong> are typed exactly as in your invitation letter.</p>
+				<p id="authFailedMsgRepeat">Authentication failed</p>
 
 				<button id="authFailedButtonOK" type="button">OK</button>
 
 			</div>
 
 			<div id="authOK">
-				<p id="authOKMessage">Hi Name!<br>Please select the file you would like to download.</p>
+				<p id="authOKMessage">Hi</p>
 				<div>
-					<label for="authOKSelectionLanguage">Language:</label>
-					<select id="authOKSelectionLanguage"></select>
+					<select id="authOKSelectionLanguage">
+						<option id="authOKPlaceholderLanguage" class="placeholder" value="" disabled selected></option>
+					</select>
 				</div>
 				<div>
-					<label for="authOKSelectionFormat">File format:</label>
-					<select id="authOKSelectionFormat"></select>
+					<select id="authOKSelectionFormat" disabled>
+						<option id="authOKPlaceholderFormat" class="placeholder" value="" disabled selected></option>
+					</select>
 				</div>
-				<button id="authOKButtonDownload" type="button">Download</button>
+				<button id="authOKButtonDownload" type="button" disabled>Download</button>
+				<p id="downloadTimer"></p>
 			</div>
 			
 			<div class="spacer"></div>

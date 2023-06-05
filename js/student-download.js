@@ -4,9 +4,9 @@ var DATASOURCE = [];
 window.addEventListener('DOMContentLoaded', () => {
 
   fetch( 
-    'data/2023_SLV.json?v=0.0.1', {
+    'data/2023_SLV.json?v=1.0.0-beta1', {
       method: "GET",
-      mode: "cors",
+      mode: "same-origin", // ON PRODUCTION: same-origin. ON DEV: cors.
       cache: "no-cache",
       credentials: "same-origin",
       headers: {
@@ -105,6 +105,12 @@ function updateText(locale) {
   document.getElementById('authFailedCodeLabel').innerHTML = data.authFailed.table.authFailedCodeLabel;
   document.getElementById('authFailedButtonOK').innerHTML = data.authFailed.authFailedButtonOK;
 
+  // Set authOK message and button texts
+  document.getElementById('authOKMessage').innerHTML = data.authOK.message;
+  document.getElementById('authOKPlaceholderLanguage').innerHTML = data.authOK.placeholderLanguage;
+  document.getElementById('authOKPlaceholderFormat').innerHTML = data.authOK.placeholderFormat;
+  downloadText = data.authOK.downloadText;
+
   // Set questions
   for ( let n of Object.keys(data.questions) ) document.getElementById('question-' + n).children[0].innerText = data.questions[n].innerText;
 
@@ -171,6 +177,7 @@ function question(qNum, qPrev) {
   let displayBtnBack   = window.getComputedStyle( document.getElementById('buttonBack') ).getPropertyValue("display");
   let displayBtnSubmit = window.getComputedStyle( document.getElementById('buttonSubmit') ).getPropertyValue("display");
 
+  // Button animations
   removeAllListeners( document.getElementById(qNow), 'animationend' );
 
   if ( qNum == 1 ) {
@@ -227,20 +234,21 @@ function question(qNum, qPrev) {
     // Submit form //
     /////////////////
 
-    let submitURL = ( window.location.hostname == 'localhost' ) ? 'http://localhost:8787' : 'student/download'; // ON PRODUCTION: Remove
-    // let submitURL = 'student/download';
+    // let submitURL = ( window.location.hostname == 'localhost' ) ? 'http://localhost:8787' : 'student/download'; // ON PRODUCTION: Comment out.
+    let submitURL = 'student/download';
 
     removeAllListeners( document.getElementById('formMain'), 'submit' );
     addListener( document.getElementById('formMain'), 'submit', event => {
 
       event.preventDefault();
 
-      moveOut( document.getElementById(qNow) );
-      moveOut( document.getElementById('formMain') );
-
-
       let name = document.querySelector('input[name=name]').value;
       let code = document.querySelector('input[name=code]').value;
+
+      if ( !name || !code ) return;
+
+      moveOut( document.getElementById(qNow) );
+      moveOut( document.getElementById('formMain') );
 
       // Load input to error page in case authetication fails
       document.getElementById('authFailedName').innerHTML = name;
@@ -252,6 +260,7 @@ function question(qNum, qPrev) {
 
   };
 
+  // Set button listeners
   document.getElementById('buttonNext')
     .addEventListener( 'animationend', () => {
 
@@ -270,13 +279,14 @@ function question(qNum, qPrev) {
 
   addListener( document.getElementById(qNow), 'animationend', () => document.getElementById(qNow).children[1].focus(), { once: true } );
 
+  // Set input keypress (Enter) listeners
   removeAllListeners( document.getElementById(qNow).children[1], 'keypress' );
   addListener( document.getElementById(qNow).children[1], 'keypress', event => {
       
-      if (event.key === "Enter") {
+      if (event.key === 'Enter') {
         event.preventDefault();
         qNum == qMax ? document.getElementById('buttonSubmit').click() : document.getElementById('buttonNext').click();
-      }
+      };
 
   });
 
@@ -291,10 +301,10 @@ async function postData(url, name, code) {
 
   try {
 
-    let mode = ( window.location.hostname == 'localhost' ) ? 'cors' : 'same-origin'; // ON PRODUCTION: Remove
-    // let mode = 'same-origin';
-    let redirect = ( window.location.hostname == 'localhost' ) ? 'follow' : 'error'; // ON PRODUCTION: Remove
-    // let redirect = 'error';
+    // let mode = ( window.location.hostname == 'localhost' ) ? 'cors' : 'same-origin'; // ON PRODUCTION: Comment out.
+    let mode = 'same-origin';
+    // let redirect = ( window.location.hostname == 'localhost' ) ? 'follow' : 'error'; // ON PRODUCTION: Comment out.
+    let redirect = 'error';
 
     const response = await fetch(url, {
     
@@ -329,6 +339,9 @@ function verifyData(json) {
 
     case 'OK':
 
+      let authOKMessage = document.getElementById('authOKMessage'); 
+      authOKMessage.innerHTML = authOKMessage.innerHTML.replace( '${name}', titleCase(document.querySelector('input[name=name]').value.replace(/\s\s+/g, ' ').trim()) );
+
       let files = JSON.parse(json.result);
 
       let selectionLanguage = document.getElementById('authOKSelectionLanguage');
@@ -336,22 +349,47 @@ function verifyData(json) {
       let buttonDownload = document.getElementById('authOKButtonDownload');
 
       loadLanguages(files, selectionLanguage);
-      loadFormats(files, selectionLanguage, selectionFormat);
-      loadButtonDownload(files, selectionLanguage, selectionFormat, buttonDownload);
 
-      // Change selectionFormat and buttonDownload on change of selectionLanguage
-      
+      moveIn(document.getElementById('authOK'))
+
+      // Set onchange listeners for selectionLanguage, selectionFormat, and buttonDownload  
       selectionLanguage.addEventListener('change', () => {
 
-          selectionFormat.innerHTML = '';
-          loadFormats(files, selectionLanguage, selectionFormat);
+        while ( selectionFormat.children.length > 1 ) selectionFormat.removeChild( selectionFormat.lastChild );
+        selectionFormat.selectedIndex = 0;      
 
-          buttonDownload.innerHTML = '';
-          loadButtonDownload(files, selectionLanguage, selectionFormat, buttonDownload);
+        loadFormats(files, selectionLanguage, selectionFormat);
+
+        buttonDownload.disabled = true;
         
       });
     
+      selectionFormat.addEventListener('change', () => {
 
+        loadButtonDownload(files, selectionLanguage, selectionFormat, buttonDownload);
+        
+      });
+
+      // Reload page on expiration of presigned URL expiration
+      downloadTimer = document.getElementById('downloadTimer');
+      timer = new CountDownTimer( 15 * 60, 1000 );
+      timer
+        .onTick( (minutes, seconds) => {
+
+          seconds = ( seconds >= 10 || minutes === 0 ) ? seconds : '0' + seconds;
+          minutes = minutes > 0 ? minutes + ':' : ( () => { downloadTimer.style.color = 'red'; return null; } )();
+          downloadTimer.innerHTML = minutes ? minutes + seconds : '⏱️ ' + seconds;
+
+        })
+        .onTick( () => {
+
+          if ( timer.expired() ) {
+            document.getElementById('formMain').reset();
+            window.location.reload();
+          }
+
+        })
+        .start();
 
       break;
 
@@ -432,6 +470,8 @@ function loadFormats(files, selectionLanguage, selectionFormat) {
 
   };
 
+  selectionFormat.disabled = false;
+
 };
 
 
@@ -441,7 +481,12 @@ function loadButtonDownload(files, selectionLanguage, selectionFormat, buttonDow
     return Object.keys(obj)[0] === selectionLanguage.value &&
     obj[selectionLanguage.value].format === selectionFormat.value } )[0][selectionLanguage.value];
 
-  buttonDownload.innerHTML = 'Download ' + dl.format + '<br>' + dl.title;
+  buttonDownload.innerHTML = ' ' + dl.format + '<br>' + dl.title;
+
+  removeAllListeners(buttonDownload, 'click');
+  addListener( buttonDownload, 'click', () => window.open(dl.path) );
+
+  buttonDownload.disabled = false;
 
 };
 
@@ -533,6 +578,8 @@ function fadeOutIn(elementOut, elementIn, display, visibility) {
 // Helper variables and functions //
 ////////////////////////////////////
 
+var downloadText;
+
 var _eventHandlers = {};
 
 const addListener = (node, event, handler, option) => {
@@ -559,4 +606,61 @@ const removeAllListeners = (targetNode, event) => {
     ({ node }) => node !== targetNode,
   );
 
+};
+
+function CountDownTimer(duration, granularity) {
+  this.duration = duration;
+  this.granularity = granularity || 1000;
+  this.tickFtns = [];
+  this.running = false;
+}
+
+CountDownTimer.prototype.start = function() {
+  if (this.running) {
+    return;
+  }
+  this.running = true;
+  var start = Date.now(),
+      that = this,
+      diff, obj;
+
+  (function timer() {
+    diff = that.duration - (((Date.now() - start) / 1000) | 0);
+        
+    if (diff > 0) {
+      setTimeout(timer, that.granularity);
+    } else {
+      diff = 0;
+      that.running = false;
+    }
+
+    obj = CountDownTimer.parse(diff);
+    that.tickFtns.forEach(function(ftn) {
+      ftn.call(this, obj.minutes, obj.seconds);
+    }, that);
+  }());
+};
+
+CountDownTimer.prototype.onTick = function(ftn) {
+  if (typeof ftn === 'function') {
+    this.tickFtns.push(ftn);
+  }
+  return this;
+};
+
+CountDownTimer.prototype.expired = function() {
+  return !this.running;
+};
+
+CountDownTimer.parse = function(seconds) {
+  return {
+    'minutes': (seconds / 60) | 0,
+    'seconds': (seconds % 60) | 0
+  };
+};
+
+function titleCase(str) {
+  return str.toLowerCase().split(' ').map(function(word) {
+    return (word.charAt(0).toUpperCase() + word.slice(1));
+  }).join(' ');
 };

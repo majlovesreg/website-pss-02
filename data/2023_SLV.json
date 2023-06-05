@@ -12,13 +12,19 @@
       "notWelcomeButtonOK": "Sure, looking forward to it"
     },
     "authFailed": {
-      "msgError": "Hmmm… Looks like there was an error in what you submitted.",
-      "msgRepeat": "Kindly check again that your <strong>name</strong> and <strong>code</strong> are typed exactly as in your invitation letter.",
+      "msgError": "🤔 Looks like there was an error in what you submitted.",
+      "msgRepeat": "Your name and code should be entered <strong>as they appear in your invitation letter.</strong>",
       "table": {
         "authFailedNameLabel": "Name",
         "authFailedCodeLabel": "Code"
       },
       "authFailedButtonOK": "Oops, let me change that"
+    },
+    "authOK": {
+      "message": "Hi ${name}!<br>Please select the textbook <strong>language</strong> and <strong>format</strong> you would like to download.",
+      "placeholderLanguage": "— Select language —",
+      "placeholderFormat": "— Select file type —",
+      "downloadText": "Download"
     },
     "questions": {
       "1": {
