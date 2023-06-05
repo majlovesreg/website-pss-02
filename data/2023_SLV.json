@@ -22,7 +22,7 @@
       "authFailedButtonOK": "Oops, let me change that"
     },
     "authOK": {
-      "message": "Hi ${name}!<br>Please select the textbook <strong>languages</strong> and <strong>formats</strong> you would like to download.",
+      "message": "Hi ${name}!<br>Please select the textbook <strong>language</strong> and <strong>format</strong> you would like to download.",
       "placeholderLanguage": "— Select language —",
       "placeholderFormat": "— Select file type —",
       "downloadText": "Download"
@@ -74,48 +74,48 @@
   {
     "locale": "vi",
     "localeName": "Tiếng Việt",
-    "pageTitle": "[VI] 2023 PSS Textbook Download",
+    "pageTitle": "Tải về sách giáo khoa Trường Tiên Phong 2023",
     "welcome": {
-      "message": "[VI] This is where PSS students can download their textbooks.\n\nAre you a PSS student for ENG-01 this year?",
-      "welcomeButtonYes": "[VI] Yes, I am",
-      "welcomeButtonNo": "[VI] Nope, just checking"
+      "message": "Đây là nơi để các học viên Trường Tiên Phong tải về sách giáo khoa.\n\nNăm nay, anh chị sẽ học Trường Tiên Phong phải không?",
+      "welcomeButtonYes": "Phải, năm nay tôi sẽ học",
+      "welcomeButtonNo": "Không phải, tôi chỉ vào đây xem thử"
     },
     "notWelcome": {
-      "message": "[VI] Thanks for dropping by.\nSee you next time when it’s your turn. 🙂",
-      "notWelcomeButtonOK": "[VI] Sure, looking forward to it"
+      "message": "Cảm ơn anh chị đã ghé qua.\nKhi nào đến lượt học thì xin mời anh chị lại vào đây nhé. 🙂",
+      "notWelcomeButtonOK": "Chắc chắn là thế, tôi rất mong chờ"
     },
     "authFailed": {
-      "msgError": "[VI] 🤔 Looks like there was an error in what you submitted.",
-      "msgRepeat": "[VI] Your name and code should be entered <strong>as they appear in your invitation letter.</strong>",
+      "msgError": "🤔 Có vẻ như anh chị đã nhập sai.",
+      "msgRepeat": "Xin anh chị nhập chính xác tên đầy đủ và mã <strong>như được ghi trong thư mời học.</strong>",
       "table": {
-        "authFailedNameLabel": "[VI] Name",
-        "authFailedCodeLabel": "[VI] Code"
+        "authFailedNameLabel": "Tên đầy đủ",
+        "authFailedCodeLabel": "Mã"
       },
-      "authFailedButtonOK": "[VI] Oops, let me change that"
+      "authFailedButtonOK": "Ồ, để tôi sửa lại"
     },
     "authOK": {
-      "message": "[VI] Hi ${name}!<br>Please select the textbook <strong>languages</strong> and <strong>formats</strong> you would like to download.",
-      "placeholderLanguage": "[VI] — Select language —",
-      "placeholderFormat": "[VI] — Select file type —",
-      "downloadText": "[VI] Download"
+      "message": "Xin chào ${name}!<br>Xin mời anh chị chọn sách giáo khoa theo <strong>ngôn ngữ</strong> và <strong>định dạng</strong> mà anh chị muốn tải về.",
+      "placeholderLanguage": "— Chọn ngôn ngữ —",
+      "placeholderFormat": "— Chọn định dạng —",
+      "downloadText": "Tải về"
     },
     "questions": {
       "1": {
-        "innerText": "[VI] What’s your name?",
-        "placeholder": "[VI] Your name in the invitation …",
+        "innerText": "Tên đầy đủ của anh chị là gì?",
+        "placeholder": "Tên đầy đủ như được ghi trong giấy mời…",
         "type": "text",
         "name": "name"
       },
       "2": {
-        "innerText": "[VI] Please enter your unique access code.",
-        "placeholder": "[VI] The code is also in the invitation …",
+        "innerText": "Xin điền vào đây mã riêng của anh chị.",
+        "placeholder": "Mã này cũng được ghi trong giấy mời…",
         "type": "text",
         "name": "code"
       }
     },
     "buttons": {
       "back": {
-        "innerText": "[VI] Back",
+        "innerText": "Quay lại",
         "type": "button",
         "id": "buttonBack",
         "style": {
@@ -124,7 +124,7 @@
         }
       },
       "next": {
-        "innerText": "[VI] Next",
+        "innerText": "Tiếp tục",
         "type": "button",
         "id": "buttonNext",
         "style": {
@@ -133,7 +133,7 @@
         }
       },
       "submit": {
-        "innerText": "[VI] Submit",
+        "innerText": "Gửi",
         "type": "submit",
         "id": "buttonSubmit",
         "style": {
