@@ -194,7 +194,7 @@ button {
   user-select: none;
   touch-action: manipulation;
   white-space: nowrap;
-  margin: auto 10px;
+  margin: auto 7px 30px 7px;
 }
 
 button:disabled {
