@@ -128,6 +128,9 @@ function updateText(locale) {
   // Set questions
   for ( let n of Object.keys(data.questions) ) document.getElementById('question-' + n).children[0].innerText = data.questions[n].innerText;
 
+  // Set placeholders
+  for ( let n of Object.keys(data.questions) ) document.getElementById('question-' + n).children[1].placeholder = data.questions[n].placeholder;
+
   // Set buttons
   for ( let v of Object.values(data.buttons) ) document.getElementById(v.id).innerText = v.innerText;
 
