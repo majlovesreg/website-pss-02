@@ -118,7 +118,12 @@ function updateText(locale) {
   document.getElementById('authOKMessage').innerHTML = data.authOK.message;
   document.getElementById('authOKPlaceholderLanguage').innerHTML = data.authOK.placeholderLanguage;
   document.getElementById('authOKPlaceholderFormat').innerHTML = data.authOK.placeholderFormat;
+
   downloadText = data.authOK.downloadText;
+  
+  let authOKMessage = document.getElementById('authOKMessage');
+  let name = document.querySelector('input[name=name]');
+  if (name.value) authOKMessage.innerHTML = authOKMessage.innerHTML.replace( '${name}', titleCase(name.value.replace(/\s\s+/g, ' ').trim()) );
 
   // Set questions
   for ( let n of Object.keys(data.questions) ) document.getElementById('question-' + n).children[0].innerText = data.questions[n].innerText;
