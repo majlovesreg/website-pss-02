@@ -7,13 +7,13 @@ window.addEventListener('DOMContentLoaded', () => {
     'data/2023_SLV.json?v=1.0.0-beta1.0.5', {
       method: "GET",
       mode: "no-cors", // ON PRODUCTION: no-cors. ON DEV: cors.
-      cache: "no-cache",
-      credentials: "same-origin",
+      // cache: "no-cache",
+      credentials: "include", /*
       headers: {
         "Content-Type": "application/json"
       },
       redirect: "error",
-      referrerPolicy: "strict-origin-when-cross-origin" 
+      referrerPolicy: "strict-origin-when-cross-origin" */ 
     }
 
   )
