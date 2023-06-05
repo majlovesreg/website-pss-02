@@ -22,7 +22,7 @@
       "authFailedButtonOK": "Oops, let me change that"
     },
     "authOK": {
-      "message": "Hi ${name}!<br>Please select the textbook <strong>language</strong> and <strong>format</strong> you would like to download.",
+      "message": "Hi ${name}!<br>Please select the textbook <strong>languages</strong> and <strong>formats</strong> you would like to download.",
       "placeholderLanguage": "— Select language —",
       "placeholderFormat": "— Select file type —",
       "downloadText": "Download"
