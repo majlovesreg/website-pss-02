@@ -25,12 +25,38 @@ window.addEventListener('DOMContentLoaded', () => {
 
 function main() {
   
+  loadTranslations();
   createForm();
   updateText();
 
   moveIn(document.getElementsByClassName('container')[0], 'flex');
 
   loadInitialListeners();
+
+};
+
+
+// Load translations
+function loadTranslations() {
+
+  let locales = DATASOURCE.filter( obj => Object.keys(obj) ).map( obj => obj.locale );
+  let localeNames = DATASOURCE.filter( obj => Object.keys(obj) ).map( obj => obj.localeName );
+
+  let languageHeader = document.getElementById('languageHeader');
+
+  for ( let i = 0; i < locales.length; i++ ) {
+
+    let button = document.createElement("button");
+    button.innerHTML = localeNames[i];
+    button.id = 'languageButton' + locales[i].toUpperCase();
+    button.type = 'button';
+    button.classList.add('languageButton');
+
+    languageHeader.appendChild(button);
+
+  };
+
+  languageHeader.children[0].classList.add('languageSelected');
 
 };
 
@@ -372,7 +398,7 @@ function verifyData(json) {
       let selectionFormat = document.getElementById('authOKSelectionFormat');
       let buttonDownload = document.getElementById('authOKButtonDownload');
 
-      loadLanguages(files, selectionLanguage);
+      loadBookLanguages(files, selectionLanguage);
 
       moveIn(document.getElementById('authOK'))
 
@@ -382,7 +408,7 @@ function verifyData(json) {
         while ( selectionFormat.children.length > 1 ) selectionFormat.removeChild( selectionFormat.lastChild );
         selectionFormat.selectedIndex = 0;      
 
-        loadFormats(files, selectionLanguage, selectionFormat);
+        loadBookFormats(files, selectionLanguage, selectionFormat);
 
         buttonDownload.disabled = true;
         
@@ -455,7 +481,7 @@ function verifyData(json) {
 };
 
 
-function loadLanguages(files, selectionLanguage) {
+function loadBookLanguages(files, selectionLanguage) {
 
   let languageCode = [];
 
@@ -480,7 +506,7 @@ function loadLanguages(files, selectionLanguage) {
 };
 
 
-function loadFormats(files, selectionLanguage, selectionFormat) {
+function loadBookFormats(files, selectionLanguage, selectionFormat) {
 
   let formats = files.filter( obj => Object.keys(obj)[0] === selectionLanguage.value ).map( obj => obj[selectionLanguage.value].format );
 

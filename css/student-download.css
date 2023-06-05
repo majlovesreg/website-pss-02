@@ -17,7 +17,7 @@ div.languageHeader {
 .languageButton {
   height: 30px;
   font-size: 14px;
-  margin: -30px auto auto auto;
+  margin: -30px auto auto 10px;
   padding: 2px 5px;
   background-image: none;
   line-height: 1.6em;

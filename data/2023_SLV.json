@@ -1,6 +1,7 @@
 [
   {
     "locale": "en",
+    "localeName": "English",
     "pageTitle": "2023 PSS Textbook Download",
     "welcome": {
       "message": "This is where PSS students can download their textbooks.\n\nAre you a PSS student for ENG-01 this year?",
@@ -72,6 +73,7 @@
   },
   {
     "locale": "vi",
+    "localeName": "Tiếng Việt",
     "pageTitle": "[VI] 2023 PSS Textbook Download",
     "welcome": {
       "message": "[VI] This is where PSS students can download their textbooks.\n\nAre you a PSS student for ENG-01 this year?",
