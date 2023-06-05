@@ -69,5 +69,76 @@
         }
       }
     }
+  },
+  {
+    "locale": "vi",
+    "pageTitle": "[VI] 2023 PSS Textbook Download",
+    "welcome": {
+      "message": "[VI] This is where PSS students can download their textbooks.\n\nAre you a PSS student for ENG-01 this year?",
+      "welcomeButtonYes": "[VI] Yes, I am",
+      "welcomeButtonNo": "[VI] Nope, just checking"
+    },
+    "notWelcome": {
+      "message": "[VI] Thanks for dropping by.\nSee you next time when it’s your turn. 🙂",
+      "notWelcomeButtonOK": "[VI] Sure, looking forward to it"
+    },
+    "authFailed": {
+      "msgError": "[VI] 🤔 Looks like there was an error in what you submitted.",
+      "msgRepeat": "[VI] Your name and code should be entered <strong>as they appear in your invitation letter.</strong>",
+      "table": {
+        "authFailedNameLabel": "[VI] Name",
+        "authFailedCodeLabel": "[VI] Code"
+      },
+      "authFailedButtonOK": "[VI] Oops, let me change that"
+    },
+    "authOK": {
+      "message": "[VI] Hi ${name}!<br>Please select the textbook <strong>language</strong> and <strong>format</strong> you would like to download.",
+      "placeholderLanguage": "[VI] — Select language —",
+      "placeholderFormat": "[VI] — Select file type —",
+      "downloadText": "[VI] Download"
+    },
+    "questions": {
+      "1": {
+        "innerText": "[VI] What’s your name?",
+        "placeholder": "[VI] Your name in the invitation …",
+        "type": "text",
+        "name": "name"
+      },
+      "2": {
+        "innerText": "[VI] Please enter your unique access code.",
+        "placeholder": "[VI] The code is also in the invitation …",
+        "type": "text",
+        "name": "code"
+      }
+    },
+    "buttons": {
+      "back": {
+        "innerText": "[VI] Back",
+        "type": "button",
+        "id": "buttonBack",
+        "style": {
+          "visibility": "hidden",
+          "display": "none"
+        }
+      },
+      "next": {
+        "innerText": "[VI] Next",
+        "type": "button",
+        "id": "buttonNext",
+        "style": {
+          "visibility": "hidden",
+          "display": "none"
+        }
+      },
+      "submit": {
+        "innerText": "[VI] Submit",
+        "type": "submit",
+        "id": "buttonSubmit",
+        "style": {
+          "visibility": "none",
+          "display": "none"
+        }
+      }
+    }
   }
 ]

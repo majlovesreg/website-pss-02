@@ -4,7 +4,7 @@ var DATASOURCE = [];
 window.addEventListener('DOMContentLoaded', () => {
 
   fetch( 
-    'data/2023_SLV.json?v=1.0.0-beta1', {
+    'data/2023_SLV.json?v=1.0.0-beta1.0.1', {
       method: "GET",
       mode: "same-origin", // ON PRODUCTION: same-origin. ON DEV: cors.
       // cache: "no-cache",
@@ -84,6 +84,15 @@ function updateText(locale) {
 
   if ( locale ) LOCALE = locale;
   var data = DATASOURCE.filter(jsonObj => jsonObj.locale == LOCALE)[0];
+  if (!data) data = DATASOURCE.filter(jsonObj => jsonObj.locale == 'en')[0];
+
+  // alert(JSON.stringify(data, null, 2));
+
+  let languageButtons = document.getElementById('languageHeader').children;
+  let languageButtonID = 'languageButton' + LOCALE.toUpperCase();
+
+  for ( let i = 0; i < languageButtons.length; i++ ) languageButtons[i].classList.remove('languageSelected');
+  document.getElementById(languageButtonID).classList.add('languageSelected');
 
   // Set page titles
   document.title = data.pageTitle;
@@ -146,6 +155,13 @@ function loadInitialListeners() {
       question(1, 'authFailed');
 
     });
+
+  // Language buttons
+  document.getElementById('languageButtonEN')
+    .addEventListener( 'click', () => updateText('en'));
+
+  document.getElementById('languageButtonVI')
+    .addEventListener( 'click', () => updateText('vi') );
 
 };
 
