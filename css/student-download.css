@@ -1,11 +1,11 @@
 * {
   box-sizing: border-box;
 }
-
+/*
 html, body, .container {
   height: calc(98.9999% - 30px);
 }
-
+*/
 div.languageHeader {
   max-width: 800px;
   width: 100%;
@@ -50,7 +50,7 @@ body {
 }
 
 h1 {
-  margin-top: 20px;
+  margin-top: 50px;
   font-weight: 500;
   color: #555;
 }
