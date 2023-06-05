@@ -11,9 +11,9 @@ window.addEventListener('DOMContentLoaded', () => {
       credentials: "include", /*
       headers: {
         "Content-Type": "application/json"
-      },
+      },*/
       redirect: "error",
-      referrerPolicy: "strict-origin-when-cross-origin" */ 
+      referrerPolicy: "strict-origin-when-cross-origin"
     }
 
   )
@@ -117,8 +117,13 @@ function updateText(locale) {
   let languageButtons = document.getElementById('languageHeader').children;
   let languageButtonID = 'languageButton' + LOCALE.toUpperCase();
 
-  for ( let i = 0; i < languageButtons.length; i++ ) languageButtons[i].classList.remove('languageSelected');
+  for ( let i = 0; i < languageButtons.length; i++ ) {
+    languageButtons[i].classList.remove('languageSelected');
+    languageButtons[i].style.zIndex = '';
+  };
+
   document.getElementById(languageButtonID).classList.add('languageSelected');
+  document.getElementById(languageButtonID).style.zIndex = '-100';
 
   // Set page titles
   document.title = data.pageTitle;
@@ -198,11 +203,31 @@ function loadInitialListeners() {
     });
 
   // Language buttons
+  let divMain = document.getElementById('divMain');
+
   document.getElementById('languageButtonEN')
-    .addEventListener( 'click', () => updateText('en'));
+    .addEventListener( 'click', () => {
+
+      divMain.classList.add('fadeOut');
+
+      divMain.addEventListener('animationend', () => {
+        updateText('en');
+        divMain.classList.remove('fadeOut');
+      }, {once: true} );
+
+    });
 
   document.getElementById('languageButtonVI')
-    .addEventListener( 'click', () => updateText('vi') );
+    .addEventListener( 'click', () => {
+
+      divMain.classList.add('fadeOut');
+
+      divMain.addEventListener('animationend', () => {
+        updateText('vi');
+        divMain.classList.remove('fadeOut');
+      }, {once: true} );
+
+    });
 
 };
 
