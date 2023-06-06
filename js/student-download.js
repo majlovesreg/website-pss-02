@@ -50,13 +50,51 @@ function loadTranslations() {
     button.innerHTML = localeNames[i];
     button.id = 'languageButton' + locales[i].toUpperCase();
     button.type = 'button';
+    button.value = locales[i];
     button.classList.add('languageButton');
 
     languageHeader.appendChild(button);
 
   };
 
-  languageHeader.children[0].classList.add('languageSelected');
+  let locale = readCookies('locale');
+
+  if (locale) {
+
+    if (locales.includes(locale)) {
+
+      LOCALE = locale;
+
+    } else {
+
+      // Get browser languages as array; enties cut after the dash (-); only unique values
+      let browserLanguages = Array.from(new Set(navigator.languages.map( l => l.replace(/-.*$/, '') )));
+
+      for (let i = 0; i < browserLanguages.length; i++) {
+        if ( locales.includes(browserLanguages[i]) ) {
+        
+          LOCALE = browserLanguages[i];
+        
+        } else {
+
+          LOCALE = locales[0];
+
+        };
+
+      };
+
+    };
+  
+  } else {
+
+    LOCALE = locales[0];
+
+  };
+
+  setCookie('locale', LOCALE, 400 * 24 * 3600, location.pathname, location.hostname, true);
+
+  // Set language selected based on locale
+  document.querySelector(`div#languageHeader button[value="${LOCALE}"]`).classList.add('languageSelected');
 
 };
 
@@ -112,7 +150,7 @@ function updateText(locale) {
   var data = DATASOURCE.filter(jsonObj => jsonObj.locale == LOCALE)[0];
   if (!data) data = DATASOURCE.filter(jsonObj => jsonObj.locale == 'en')[0];
 
-  // alert(JSON.stringify(data, null, 2));
+  setCookie('locale', LOCALE, 400 * 24 * 3600, location.pathname, location.hostname, true);
 
   let languageButtons = document.getElementById('languageHeader').children;
   let languageButtonID = 'languageButton' + LOCALE.toUpperCase();
@@ -745,4 +783,74 @@ function titleCase(str) {
   return str.toLowerCase().split(' ').map(function(word) {
     return (word.charAt(0).toUpperCase() + word.slice(1));
   }).join(' ');
+};
+
+function readCookies(cookieName) {
+
+  if ( ! document.cookie ) return null;
+
+  let cookies = document.cookie.split(';');
+
+  let cookieArray = [];
+
+  for (let i = 0; i < cookies.length; i++) {
+
+    let cookie = cookies[i].split('=');
+
+    cookie[0] = cookie[0].trim();
+    cookie[1] = cookie[1].trim();
+
+    if (cookieName && cookie[0] === cookieName) {
+
+      return cookie[1];
+
+    } else if (!cookieName) {
+
+      cookieArray.push({
+        name: cookie[0],
+        value: cookie[1]
+
+      });
+
+    };
+
+  };
+
+  return cookieArray;
+
+};
+
+function setCookie(name, value, expires, path, domain, secure) {
+
+/*
+name: The name of the cookie.
+value: The value of the cookie.
+expires: The expiration date of the cookie, in milliseconds. If this is not specified, the cookie will expire when the browser is closed.
+path: The path of the cookie. If this is not specified, the cookie will be available on all pages in the domain.
+domain: The domain of the cookie. If this is not specified, the cookie will be available on all subdomains of the domain.
+secure: Whether the cookie should only be sent over secure connections. If this is not specified, the cookie will be sent over both secure and insecure connections.
+*/
+
+  var cookie = name + "=" + encodeURIComponent(value);
+
+  if (expires) {
+    var date = new Date();
+    date.setTime(date.getTime() + (expires * 1000));
+    cookie += "; expires=" + date.toUTCString();
+  }
+
+  if (path) {
+    cookie += "; path=" + path;
+  }
+
+  if (domain) {
+    cookie += "; domain=" + domain;
+  }
+
+  if (secure) {
+    cookie += "; secure";
+  }
+
+  document.cookie = cookie;
+
 };
