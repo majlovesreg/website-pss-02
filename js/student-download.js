@@ -241,31 +241,25 @@ function loadInitialListeners() {
     });
 
   // Language buttons
+
+  let locales = DATASOURCE.filter( obj => Object.keys(obj) ).map( obj => obj.locale );
   let divMain = document.getElementById('divMain');
 
-  document.getElementById('languageButtonEN')
-    .addEventListener( 'click', () => {
-
-      divMain.classList.add('fadeOut');
-
-      divMain.addEventListener('animationend', () => {
-        updateText('en');
-        divMain.classList.remove('fadeOut');
-      }, {once: true} );
-
-    });
-
-  document.getElementById('languageButtonVI')
-    .addEventListener( 'click', () => {
-
-      divMain.classList.add('fadeOut');
-
-      divMain.addEventListener('animationend', () => {
-        updateText('vi');
-        divMain.classList.remove('fadeOut');
-      }, {once: true} );
-
-    });
+  for ( let i = 0; i < locales.length; i++ ) {
+      
+    document.getElementById('languageButton' + locales[i].toUpperCase() )
+      .addEventListener( 'click', () => {
+  
+        divMain.classList.add('fadeOut');
+  
+        divMain.addEventListener('animationend', () => {
+          updateText(locales[i]);
+          divMain.classList.remove('fadeOut');
+        }, {once: true} );
+  
+      });
+    
+  };
 
 };
 
