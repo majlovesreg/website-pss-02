@@ -74,7 +74,7 @@ function loadTranslations() {
 
   };
 
-  let locale = readCookies('locale');
+  let locale = storageAvailable('localStorage') ? localStorage.getItem('locale') : readCookies('locale');
 
   if (locale) {
 
@@ -108,7 +108,9 @@ function loadTranslations() {
 
   };
 
-  setCookie('locale', LOCALE, 400 * 24 * 3600, window.location.pathname, window.location.hostname, true);
+  storageAvailable('localStorage') ?
+    localStorage.setItem('locale', LOCALE) :
+    setCookie('locale', LOCALE, 400 * 24 * 3600, window.location.pathname, window.location.hostname, true);
 
   // Set language selected based on locale
   document.querySelector(`div#languageHeader button[value="${LOCALE}"]`).classList.add('languageSelected');
@@ -167,7 +169,9 @@ function updateText(locale) {
   var data = DATASOURCE.filter(jsonObj => jsonObj.locale == LOCALE)[0];
   if (!data) data = DATASOURCE.filter(jsonObj => jsonObj.locale == 'en')[0];
 
-  setCookie('locale', LOCALE, 400 * 24 * 3600, window.location.pathname, window.location.hostname, true);
+  storageAvailable('localStorage') ?
+    localStorage.setItem('locale', LOCALE) :
+    setCookie('locale', LOCALE, 400 * 24 * 3600, window.location.pathname, window.location.hostname, true);
 
   let languageButtons = document.getElementById('languageHeader').children;
   let languageButtonID = 'languageButton' + LOCALE.toUpperCase();
@@ -872,5 +876,42 @@ secure: Whether the cookie should only be sent over secure connections. If this 
   }
 
   document.cookie = cookie;
+
+};
+
+// https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API#feature-detecting_localstorage
+function storageAvailable(type) {
+
+  let storage;
+
+  try {
+
+    storage = window[type];
+    const x = "__storage_test__";
+    storage.setItem(x, x);
+    storage.removeItem(x);
+    return true;
+
+  } catch (e) {
+
+    return (
+
+      e instanceof DOMException &&
+      // everything except Firefox
+      (e.code === 22 ||
+        // Firefox
+        e.code === 1014 ||
+        // test name field too, because code might not be present
+        // everything except Firefox
+        e.name === "QuotaExceededError" ||
+        // Firefox
+        e.name === "NS_ERROR_DOM_QUOTA_REACHED") &&
+      // acknowledge QuotaExceededError only if there's something already stored
+      storage &&
+      storage.length !== 0
+
+    );
+
+  };
 
 };
