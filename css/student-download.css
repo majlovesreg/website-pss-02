@@ -1,11 +1,7 @@
 * {
   box-sizing: border-box;
 }
-/*
-html, body, .container {
-  height: calc(98.9999% - 30px);
-}
-*/
+
 div.languageHeader {
   max-width: 800px;
   width: 100%;
@@ -68,7 +64,6 @@ p {
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: center;
-  opacity: 0;
 }
 
 .question {
@@ -160,17 +155,6 @@ input[type=text]:focus {
   animation: fadeOut 0.5s ease-out 0s 1 normal forwards running;
 }
 
-/*
-button {
-  background-color: #000;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  font-size: 20px;
-}
-*/
-
 /* https://getcssscan.com/css-buttons-examples */
 
 button {
@@ -257,9 +241,9 @@ td:hover {
   background-color: #ddd;
 }
 
-div#notWelcome, div#authFailed, div#authOK {
+div#beforeStartDate, div#welcome, div#notWelcome, div#authFailed, div#authOK {
   display: none;
-  z-index: -999;
+  z-index: -100;
 }
 
 .overflow-x-auto {

@@ -3,6 +3,10 @@
     "locale": "en",
     "localeName": "English",
     "pageTitle": "2023 PSS Textbook Download",
+    "dateCheck": {
+      "beforeStartDateMessage": "Excited?<br>Of course! 😄<br><br>You may download your sign language textbooks <strong>two months</strong> before your class begins.",
+      "beforeStartDateButton": "Got it!"
+    },
     "welcome": {
       "message": "This is where PSS students can download their textbooks.\n\nAre you a PSS student for ENG-01 this year?",
       "welcomeButtonYes": "Yes, I am",
@@ -75,6 +79,10 @@
     "locale": "vi",
     "localeName": "Tiếng Việt",
     "pageTitle": "Tải về sách giáo khoa Trường Tiên Phong 2023",
+    "dateCheck": {
+      "beforeStartDateMessage": "[VI] Excited?<br>Of course! 😄<br><br>You may download your sign language textbooks <strong>two months</strong> before your class begins.",
+      "beforeStartDateButton": "[VI] Got it!"
+    },
     "welcome": {
       "message": "Đây là nơi để các học viên Trường Tiên Phong tải về sách giáo khoa.\n\nNăm nay, anh chị sẽ học Trường Tiên Phong phải không?",
       "welcomeButtonYes": "Phải, năm nay tôi sẽ học",
