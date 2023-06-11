@@ -81,7 +81,7 @@
     "pageTitle": "Tải về sách giáo khoa Trường Tiên Phong 2023",
     "dateCheck": {
       "beforeStartDateMessage": "Anh chị có hào hứng không?<br>Chắc hẵn là có! 😄<br><br>Anh chị có thể bắt đầu tải về các sách giáo khoa ngôn ngữ ký hiệu <strong>hai tháng</strong> trước ngày học.",
-      "beforeStartDateButton": "Tôi đã hiểu!"
+      "beforeStartDateButton": "Tôi hiểu rồi!"
     },
     "welcome": {
       "message": "Đây là nơi để các học viên Trường Tiên Phong tải về sách giáo khoa.\n\nNăm nay, anh chị sẽ học Trường Tiên Phong phải không?",
