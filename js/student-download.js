@@ -61,6 +61,7 @@ function loadTranslations() {
 
   let languageHeader = document.getElementById('languageHeader');
 
+  // Generate language selections 
   for ( let i = 0; i < locales.length; i++ ) {
 
     let button = document.createElement("button");
@@ -74,37 +75,24 @@ function loadTranslations() {
 
   };
 
+  // Read whether locale was previously saved
   let locale = storageAvailable('localStorage') ? localStorage.getItem('locale') : readCookies('locale');
 
   if (locale) {
 
-    if (locales.includes(locale)) {
+    if ( locales.includes(locale) ) {
 
       LOCALE = locale;
 
     } else {
 
-      // Get browser languages as array; enties cut after the dash (-); only unique values
-      let browserLanguages = Array.from(new Set(navigator.languages.map( l => l.replace(/-.*$/, '') )));
-
-      for (let i = 0; i < browserLanguages.length; i++) {
-        if ( locales.includes(browserLanguages[i]) ) {
-        
-          LOCALE = browserLanguages[i];
-        
-        } else {
-
-          LOCALE = locales[0];
-
-        };
-
-      };
+      LOCALE = setLocaleFromBrowserLangs(locales);
 
     };
   
   } else {
 
-    LOCALE = locales[0];
+    LOCALE = setLocaleFromBrowserLangs(locales);
 
   };
 
@@ -631,6 +619,19 @@ function loadButtonDownload(files, selectionLanguage, selectionFormat, buttonDow
   addListener( buttonDownload, 'click', () => window.open(dl.path) );
 
   buttonDownload.disabled = false;
+
+};
+
+
+function setLocaleFromBrowserLangs(locales) {
+
+  // Get browser languages as array; entries cut after the dash (-); only unique values
+  let browserLanguages = Array.from(new Set(navigator.languages.map( l => l.replace(/-.*$/, '') )));
+
+  for (let i = 0; i < browserLanguages.length; i++) if ( locales.includes(browserLanguages[i]) ) return browserLanguages[i];
+  
+  // If browser languages not found in locales, use the first locales value
+  return locales[0];
 
 };
 
