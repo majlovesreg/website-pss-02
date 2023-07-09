@@ -56,9 +56,11 @@ function main() {
 // Load translations
 function loadTranslations() {
 
+  // Get languages from DATASOURCE
   let locales = DATASOURCE.filter( obj => Object.keys(obj) ).map( obj => obj.locale );
   let localeNames = DATASOURCE.filter( obj => Object.keys(obj) ).map( obj => obj.localeName );
 
+  // Set DOM for languageHeader
   let languageHeader = document.getElementById('languageHeader');
 
   // Generate language selections 
@@ -78,8 +80,10 @@ function loadTranslations() {
   // Read whether locale was previously saved
   let locale = storageAvailable('localStorage') ? localStorage.getItem('locale') : readCookies('locale');
 
+  // Set LOCALE to previously saved value, or if not present, based on browser language preferences
   LOCALE = locales.includes(locale) ? locale : setLocaleFromBrowserLangs(locales);
 
+  // Save locale to either localStorage, or if not possible, as cookies
   storageAvailable('localStorage') ?
     localStorage.setItem('locale', LOCALE) :
     setCookie('locale', LOCALE, 400 * 24 * 3600, window.location.pathname, window.location.hostname, true);
@@ -609,12 +613,13 @@ function loadButtonDownload(files, selectionLanguage, selectionFormat, buttonDow
 
 function setLocaleFromBrowserLangs(locales) {
 
-  // Get browser languages as array; entries cut after the dash (-); only unique values
+  // Get browser languages as array; entries cut after the dash (-); only unique values by `Set`
   let browserLanguages = Array.from(new Set(navigator.languages.map( l => l.replace(/-.*$/, '') )));
 
+  // Return if browserLanguages matches DATASOURCE locales
   for (let i = 0; i < browserLanguages.length; i++) if ( locales.includes(browserLanguages[i]) ) return browserLanguages[i];
   
-  // If browser languages not found in locales, use the first locales value
+  // If browser languages not found in locales, use the first locales value as default
   return locales[0];
 
 };
