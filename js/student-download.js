@@ -78,23 +78,7 @@ function loadTranslations() {
   // Read whether locale was previously saved
   let locale = storageAvailable('localStorage') ? localStorage.getItem('locale') : readCookies('locale');
 
-  if (locale) {
-
-    if ( locales.includes(locale) ) {
-
-      LOCALE = locale;
-
-    } else {
-
-      LOCALE = setLocaleFromBrowserLangs(locales);
-
-    };
-  
-  } else {
-
-    LOCALE = setLocaleFromBrowserLangs(locales);
-
-  };
+  LOCALE = locales.includes(locale) ? locale : setLocaleFromBrowserLangs(locales);
 
   storageAvailable('localStorage') ?
     localStorage.setItem('locale', LOCALE) :
