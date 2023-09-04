@@ -354,8 +354,8 @@ function question(qNum, qPrev) {
     // Submit form //
     /////////////////
 
-    // let submitURL = ( window.location.hostname == 'localhost' ) ? 'http://localhost:8787' : 'student/download'; // ON PRODUCTION: Comment out.
-    let submitURL = 'student/download';
+    // let submitURL = ( window.location.hostname == 'localhost' ) ? 'http://localhost:8787' : 'https://api1.majlovesreg.one/student/download'; // ON PRODUCTION: Comment out.
+    let submitURL = 'https://api1.majlovesreg.one/student/download';
 
     removeAllListeners( document.getElementById('formMain'), 'submit' );
     addListener( document.getElementById('formMain'), 'submit', event => {
