@@ -73,16 +73,20 @@ function loadTranslations() {
   let languageHeader = document.getElementById('languageHeader');
 
   // Generate language selections 
-  for ( let i = 0; i < locales.length; i++ ) {
+  if ( locales.length > 1 ) {
 
-    let button = document.createElement("button");
-    button.innerHTML = localeNames[i];
-    button.id = 'languageButton' + locales[i].toUpperCase();
-    button.type = 'button';
-    button.value = locales[i];
-    button.classList.add('languageButton');
+    for ( let i = 0; i < locales.length; i++ ) {
 
-    languageHeader.appendChild(button);
+      let button = document.createElement("button");
+      button.innerHTML = localeNames[i];
+      button.id = 'languageButton' + locales[i].toUpperCase();
+      button.type = 'button';
+      button.value = locales[i];
+      button.classList.add('languageButton');
+
+      languageHeader.appendChild(button);
+
+    };
 
   };
 
