@@ -72,21 +72,22 @@ function loadTranslations() {
   // Set DOM for languageHeader
   let languageHeader = document.getElementById('languageHeader');
 
+  // Don't display languageHeader if only single language
+  if ( locales.length < 2 ) {
+    languageHeader.style.display = 'none';
+  };
+
   // Generate language selections 
-  if ( locales.length > 1 ) {
+  for ( let i = 0; i < locales.length; i++ ) {
 
-    for ( let i = 0; i < locales.length; i++ ) {
+    let button = document.createElement("button");
+    button.innerHTML = localeNames[i];
+    button.id = 'languageButton' + locales[i].toUpperCase();
+    button.type = 'button';
+    button.value = locales[i];
+    button.classList.add('languageButton');
 
-      let button = document.createElement("button");
-      button.innerHTML = localeNames[i];
-      button.id = 'languageButton' + locales[i].toUpperCase();
-      button.type = 'button';
-      button.value = locales[i];
-      button.classList.add('languageButton');
-
-      languageHeader.appendChild(button);
-
-    };
+    languageHeader.appendChild(button);
 
   };
 
@@ -102,9 +103,7 @@ function loadTranslations() {
     setCookie('locale', LOCALE, 400 * 24 * 3600, window.location.pathname, window.location.hostname, true);
 
   // Set language selected based on locale
-  if ( locales.length > 1 ) {
-    document.querySelector(`div#languageHeader button[value="${LOCALE}"]`).classList.add('languageSelected');
-  };
+  document.querySelector(`div#languageHeader button[value="${LOCALE}"]`).classList.add('languageSelected');
 
 };
 
