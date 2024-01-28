@@ -2,13 +2,16 @@ var dates = {};
 dates.startDate = Date.parse('2024-03-08T00:00:00.000+08:00');
 dates.endDate = Date.parse('2024-04-20T16:00:00.000+08:00');
 
+var languageData = 'data/2023_SLV.json?v=1.0.0-beta1.0.5';
+var submitURL = 'https://www.majlovesreg.one/pss/dl'
+
 var LOCALE = 'en';
 var DATASOURCE = [];
 
 window.addEventListener('DOMContentLoaded', () => {
 
   fetch( 
-    'data/2023_SLV.json?v=1.0.0-beta1.0.5', {
+    languageData, {
       method: "GET",
       mode: "no-cors", // ON PRODUCTION: no-cors. ON DEV: cors.
       // cache: "no-cache",
@@ -355,7 +358,7 @@ function question(qNum, qPrev) {
     /////////////////
 
     // let submitURL = ( window.location.hostname == 'localhost' ) ? 'http://localhost:8787' : '/student/download'; // ON PRODUCTION: Comment out.
-    let submitURL = '/student/download';
+    // let submitURL = '/student/download';
 
     removeAllListeners( document.getElementById('formMain'), 'submit' );
     addListener( document.getElementById('formMain'), 'submit', event => {
