@@ -7,4 +7,4 @@ Students will usually access the [/student.html](https://github.com/majlovesreg/
 
 ## Files to edit on repository copy
  - [CNAME](https://github.com/majlovesreg/website-pss-02/blob/main/CNAME) - Set up using [GitHub Pages](https://pages.github.com/).
- - [/js/student-download.js](https://github.com/majlovesreg/website-pss-02/blob/main/js/student-download.js) - Edit `dates.startDate` and `dates.endDate`.
+ - [/js/student-download.js](https://github.com/majlovesreg/website-pss-02/blob/main/js/student-download.js) - Edit `// Variables //`.
