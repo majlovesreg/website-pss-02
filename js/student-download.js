@@ -6,7 +6,7 @@ var dates = {};
 dates.startDate = Date.parse('2024-03-08T00:00:00.000+08:00');
 dates.endDate = Date.parse('2024-04-20T16:00:00.000+08:00');
 
-var languageData = 'data/2024_EN.json?v=0.0.1';
+var languageData = 'data/2024_EN.json';
 var submitURL = 'https://www.majlovesreg.one/pss/dl'
 
 var LOCALE = 'en';
@@ -102,7 +102,9 @@ function loadTranslations() {
     setCookie('locale', LOCALE, 400 * 24 * 3600, window.location.pathname, window.location.hostname, true);
 
   // Set language selected based on locale
-  document.querySelector(`div#languageHeader button[value="${LOCALE}"]`).classList.add('languageSelected');
+  if ( locales.length > 1 ) {
+    document.querySelector(`div#languageHeader button[value="${LOCALE}"]`).classList.add('languageSelected');
+  };
 
 };
 
