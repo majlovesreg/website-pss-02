@@ -1,0 +1,78 @@
+[
+  {
+    "locale": "en",
+    "localeName": "English",
+    "pageTitle": "2023 PSS Textbook Download",
+    "dateCheck": {
+      "beforeStartDateMessage": "Excited?<br>Of course! 😄<br><br>You may download your sign language textbooks <strong>two months</strong> before your class begins.",
+      "beforeStartDateButton": "Got it!"
+    },
+    "welcome": {
+      "message": "This is where PSS students can download their textbooks.\n\nAre you a PSS student for ENG-01 this year?",
+      "welcomeButtonYes": "Yes, I am",
+      "welcomeButtonNo": "Nope, just checking"
+    },
+    "notWelcome": {
+      "message": "Thanks for dropping by.\nSee you next time when it’s your turn. 🙂",
+      "notWelcomeButtonOK": "Sure, looking forward to it"
+    },
+    "authFailed": {
+      "msgError": "🤔 Looks like there was an error in what you submitted.",
+      "msgRepeat": "Your name and code should be entered <strong>as they appear in your invitation letter.</strong>",
+      "table": {
+        "authFailedNameLabel": "Name",
+        "authFailedCodeLabel": "Code"
+      },
+      "authFailedButtonOK": "Oops, let me change that"
+    },
+    "authOK": {
+      "message": "Hi ${name}!<br>Please select the textbook <strong>languages</strong> and <strong>formats</strong> you would like to download.",
+      "placeholderLanguage": "— Select language —",
+      "placeholderFormat": "— Select file type —",
+      "downloadText": "Download"
+    },
+    "questions": {
+      "1": {
+        "innerText": "What’s your name?",
+        "placeholder": "Your name in the invitation …",
+        "type": "text",
+        "name": "name"
+      },
+      "2": {
+        "innerText": "Please enter your unique access code.",
+        "placeholder": "The code is also in the invitation …",
+        "type": "text",
+        "name": "code"
+      }
+    },
+    "buttons": {
+      "back": {
+        "innerText": "Back",
+        "type": "button",
+        "id": "buttonBack",
+        "style": {
+          "visibility": "hidden",
+          "display": "none"
+        }
+      },
+      "next": {
+        "innerText": "Next",
+        "type": "button",
+        "id": "buttonNext",
+        "style": {
+          "visibility": "hidden",
+          "display": "none"
+        }
+      },
+      "submit": {
+        "innerText": "Submit",
+        "type": "submit",
+        "id": "buttonSubmit",
+        "style": {
+          "visibility": "none",
+          "display": "none"
+        }
+      }
+    }
+  }
+]
