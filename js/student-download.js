@@ -1,6 +1,6 @@
 var dates = {};
-dates.startDate = Date.parse('2023-07-11T00:00:00.000+07:00');
-dates.endDate = Date.parse('2023-09-16T16:00:00.000+07:00');
+dates.startDate = Date.parse('2024-03-08T00:00:00.000+08:00');
+dates.endDate = Date.parse('2024-04-20T16:00:00.000+08:00');
 
 var LOCALE = 'en';
 var DATASOURCE = [];
