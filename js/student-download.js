@@ -1,3 +1,7 @@
+///////////////
+// Variables //
+///////////////
+
 var dates = {};
 dates.startDate = Date.parse('2024-03-08T00:00:00.000+08:00');
 dates.endDate = Date.parse('2024-04-20T16:00:00.000+08:00');
@@ -7,6 +11,8 @@ var submitURL = 'https://www.majlovesreg.one/pss/dl'
 
 var LOCALE = 'en';
 var DATASOURCE = [];
+
+//////////////////////////////////////////////////////////////
 
 window.addEventListener('DOMContentLoaded', () => {
 
