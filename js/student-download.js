@@ -3,7 +3,8 @@
 ///////////////
 
 var dates = {};
-dates.startDate = Date.parse('2024-03-08T00:00:00.000+08:00');
+// dates.startDate = Date.parse('2024-03-08T00:00:00.000+08:00');
+dates.startDate = Date.parse('2024-01-08T00:00:00.000+08:00');
 dates.endDate = Date.parse('2024-04-20T16:00:00.000+08:00');
 
 var languageData = 'data/2024_EN.json';
@@ -369,7 +370,6 @@ function question(qNum, qPrev) {
     /////////////////
 
     // let submitURL = ( window.location.hostname == 'localhost' ) ? 'http://localhost:8787' : '/student/download'; // ON PRODUCTION: Comment out.
-    // let submitURL = '/student/download';
 
     removeAllListeners( document.getElementById('formMain'), 'submit' );
     addListener( document.getElementById('formMain'), 'submit', event => {
@@ -440,6 +440,8 @@ async function postData(url, name, code) {
     // let redirect = ( window.location.hostname == 'localhost' ) ? 'follow' : 'error'; // ON PRODUCTION: Comment out.
     let redirect = 'error';
 
+    let urlBasename = window.location.pathname.split('/').pop().split('.').shift();
+
     const response = await fetch(url, {
     
       method: "POST",
@@ -453,6 +455,7 @@ async function postData(url, name, code) {
       referrerPolicy: "strict-origin-when-cross-origin",
 
       body: JSON.stringify({
+        urlBasename,
         name,
         code
       })
