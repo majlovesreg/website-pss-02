@@ -433,6 +433,8 @@ async function postData(url, name, code) {
 
   try {
 
+    let basename = window.location.pathname.split('/').pop().split('.').shift();
+
     const response = await fetch(url, {
     
       method: "POST",
@@ -445,7 +447,7 @@ async function postData(url, name, code) {
       referrerPolicy: "no-referrer-when-downgrade",
 
       body: JSON.stringify({
-        window.location.pathname.split('/').pop().split('.').shift(),
+        basename,
         name,
         code
       })
