@@ -1,1 +1,102 @@
-bookdl.html
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta http-equiv='cache-control' content='no-cache'> 
+		<meta http-equiv='expires' content='0'>
+		<meta http-equiv='pragma' content='no-cache'>
+		<meta name="robots" content="none">
+
+		<title>PSS Textbook Download</title>
+		
+		<link rel="icon" href="favicon.svg?v=1.0.0" sizes="any" type="image/svg+xml">
+
+		<link rel="preload" as="fetch" type="application/json" href="data/2024_EN.json">
+		<link rel="stylesheet" href="css/student-download.css">
+		<script src="js/student-download.js" defer></script>
+		
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=fallback"/>
+	</head>
+
+	<body>
+
+		<noscript>
+			Your browser is not running Javascript. Are you OK if the webpage looks like a 90’s throwback?
+		</noscript>
+
+		<div id="languageHeader" class="languageHeader"></div>
+
+		<div id="divMain" class="container center">
+
+			<div id="beforeStartDate">
+				<p id="beforeStartDateMessage"></p>
+				<button id="beforeStartDateButton" type="button">OK</button>
+			</div>
+			
+			<div id="welcome">
+				<h1 id="pageTitle">PSS Textbook Download</h1>
+				<p id="welcomeMessage">Hi! If you see this message, then the form data did not load properly. Please contact Maj to report the issue.</p>
+				<button id="welcomeButtonNo" type="button" class="transparent">No</button>
+				<button id="welcomeButtonYes" type="button">Yes</button>
+			</div>
+
+			<div id="notWelcome">
+				<p id="notWelcomeMessage"></p>
+				<button id="notWelcomeButtonOK" type="button">OK</button>
+			</div>
+			
+			<form id="formMain" action="/403.html" method="post" autocomplete="off"></form>
+
+			<div id="authFailed">
+			
+				<p id="authFailedMsgError"></p>
+				
+				<div class="overflow-x-auto">
+					<table>
+						<tbody>
+							<tr>
+								<td id="authFailedNameLabel">Name</td>
+								<td id="authFailedName" class="strong"></td>
+								<td id="authFailedNameIcon"></td>
+							</tr>
+							<tr>
+								<td id="authFailedCodeLabel">Code</td>
+								<td id="authFailedCode" class="strong"></td>
+								<td id="authFailedCodeIcon"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				
+				<p id="authFailedMsgRepeat">Authentication failed</p>
+
+				<button id="authFailedButtonOK" type="button">OK</button>
+
+			</div>
+
+			<div id="authOK">
+				<p id="authOKMessage">Hi</p>
+				<div>
+					<select id="authOKSelectionLanguage">
+						<option id="authOKPlaceholderLanguage" class="placeholder" value="" disabled selected></option>
+					</select>
+				</div>
+				<div>
+					<select id="authOKSelectionFormat" disabled>
+						<option id="authOKPlaceholderFormat" class="placeholder" value="" disabled selected></option>
+					</select>
+				</div>
+				<button id="authOKButtonDownload" type="button" disabled>Download</button>
+				<p id="downloadTimer"></p>
+			</div>
+			
+			<div class="spacer"></div>
+
+		</div>
+
+	</body>
+
+</html>
