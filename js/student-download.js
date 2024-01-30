@@ -426,10 +426,9 @@ async function postData(url, name, code) {
 
   name = name.replace(/\s\s+/g, ' ').trim().toUpperCase();
   code = code.replace(/\s+/g, '').toUpperCase();
+  let basename = window.location.pathname.split('/').pop().split('.').shift().toUpperCase();
 
   try {
-
-    let basename = window.location.pathname.split('/').pop().split('.').shift();
 
     const response = await fetch(url, {
     
