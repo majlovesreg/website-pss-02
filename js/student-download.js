@@ -20,7 +20,7 @@ window.addEventListener('DOMContentLoaded', () => {
   fetch( 
     languageData, {
       method: "GET",
-      mode: "same-origin", // ON PRODUCTION: same-origin. ON DEV: cors.
+      mode: "same-origin",
       headers: {
         "Content-Type": "application/json"
       },
