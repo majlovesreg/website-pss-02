@@ -8,7 +8,7 @@ dates.startDate = Date.parse('2024-01-08T00:00:00.000+08:00');
 dates.endDate = Date.parse('2024-04-20T16:00:00.000+08:00');
 
 var languageData = 'data/2024_EN.json';
-var submitURL = 'https://www.majlovesreg.one/dynamic/pss/dl'
+var submitURL = 'https://pss.majlovesreg.one/dynamic/pss/dl'
 
 var LOCALE = 'en';
 var DATASOURCE = [];
