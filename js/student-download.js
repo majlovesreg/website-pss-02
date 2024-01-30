@@ -20,13 +20,11 @@ window.addEventListener('DOMContentLoaded', () => {
   fetch( 
     languageData, {
       method: "GET",
-      mode: "no-cors", // ON PRODUCTION: no-cors. ON DEV: cors.
-      // cache: "no-cache",
-      credentials: "include", /*
+      mode: "same-origin", // ON PRODUCTION: same-origin. ON DEV: cors.
       headers: {
         "Content-Type": "application/json"
-      },*/
-      redirect: "error",
+      },
+      redirect: "follow",
       referrerPolicy: "strict-origin-when-cross-origin"
     }
 
@@ -435,27 +433,19 @@ async function postData(url, name, code) {
 
   try {
 
-    // let mode = ( window.location.hostname == 'localhost' ) ? 'cors' : 'same-origin'; // ON PRODUCTION: Comment out.
-    let mode = 'same-origin';
-    // let redirect = ( window.location.hostname == 'localhost' ) ? 'follow' : 'error'; // ON PRODUCTION: Comment out.
-    let redirect = 'error';
-
-    let urlBasename = window.location.pathname.split('/').pop().split('.').shift();
-
     const response = await fetch(url, {
     
       method: "POST",
-      mode: mode,
+      mode: "cors",
       cache: "no-cache",
-      credentials: "same-origin",
       headers: {
         "Content-Type": "application/json"
       },
-      redirect: redirect,
-      referrerPolicy: "strict-origin-when-cross-origin",
+      redirect: "error",
+      referrerPolicy: "no-referrer-when-downgrade",
 
       body: JSON.stringify({
-        urlBasename,
+        window.location.pathname.split('/').pop().split('.').shift(),
         name,
         code
       })
