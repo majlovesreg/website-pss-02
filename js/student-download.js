@@ -20,12 +20,8 @@ window.addEventListener('DOMContentLoaded', () => {
   fetch( 
     languageData, {
       method: "GET",
-      mode: "same-origin",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      redirect: "follow",
-      referrerPolicy: "strict-origin-when-cross-origin"
+      mode: "no-cors",
+      credentials: "include"
     }
 
   )
