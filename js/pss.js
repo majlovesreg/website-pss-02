@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 window.addEventListener('load', () => {
 
+   console.log( 'Initial load: ' + new Date() );
+
    document.getElementById('bk').style.animationPlayState = 'running';
 
    window.setInterval( () => {
