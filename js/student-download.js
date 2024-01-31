@@ -526,16 +526,16 @@ function verifyData(json) {
       let element;
 
       element = document.getElementById('authFailedName');
-      json.result.name ? element.style.color = 'initial' : element.style.color = 'red';
+      json.result.name ? element.style.color = 'green' : element.style.color = 'red';
 
       element = document.getElementById('authFailedNameIcon');
-      json.result.name ? element.innerHTML = '🆗' : element.innerHTML = '❌';
+      json.result.name ? element.innerHTML = '✅' : element.innerHTML = '❌';
 
       element = document.getElementById('authFailedCode');
-      json.result.code ? element.style.color = 'initial' : element.style.color = 'red';
+      json.result.code ? element.style.color = 'green' : element.style.color = 'red';
 
       element = document.getElementById('authFailedCodeIcon');
-      json.result.code ? element.innerHTML = '🆗' : element.innerHTML = '❌';
+      json.result.code ? element.innerHTML = '✅' : element.innerHTML = '❌';
 
       break;
 
