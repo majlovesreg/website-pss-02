@@ -229,8 +229,6 @@ function loadInitialListeners() {
   document.getElementById('beforeStartDateButton')
     .addEventListener( 'click', () => window.location.assign('https://www.jw.org/') );
 
-  // document.getElementById('welcomeButtonYes').focus();
-
   document.getElementById('welcomeButtonYes')
     .addEventListener( 'click', () => question(1, 'welcome') );
 
