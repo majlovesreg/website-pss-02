@@ -423,6 +423,10 @@ function question(qNum, qPrev) {
 
 async function postData(url, name, code) {
 
+  // Load languages
+  let data = DATASOURCE.filter(jsonObj => jsonObj.locale == LOCALE)[0];
+  let genericErrorMsg = data.errors.genericMessage;
+
   name = name.replace(/\s\s+/g, ' ').trim().toUpperCase();
   code = code.replace(/\s+/g, '').toUpperCase();
   let basename = window.location.pathname.split('/').pop().split('.').shift().toUpperCase();
@@ -446,12 +450,11 @@ async function postData(url, name, code) {
         code
       })
     
-    })
-    .catch( e => { throw new Error( 'Fetch POST error: ' + e ) } );
+    }).catch( e => { alert( genericErrorMsg + e ) } );
 
     return response.json();
 
-  } catch(e) { throw new Error( 'Try-fetch failed: ' + e ) };
+  } catch(e) { alert( genericErrorMsg + e ) };
 
 };
 

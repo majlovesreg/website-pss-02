@@ -73,6 +73,9 @@
           "display": "none"
         }
       }
+    },
+    "errors": {
+      "genericMessage": "Oops, something went wrong. Would you report what happened? Here's the error message:\n\n"
     }
   }
 ]
