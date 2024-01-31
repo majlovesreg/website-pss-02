@@ -8,7 +8,7 @@ window.addEventListener('load', () => {
 
    window.setInterval( () => {
 
-   	console.log( new Date() );
+   	console.log( 'Background image reload: ' + new Date() );
 
    	let bk = document.getElementById('bk');
    	let bkclone = bk.cloneNode(true);
