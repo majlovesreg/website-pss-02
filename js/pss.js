@@ -8,8 +8,10 @@ window.addEventListener('load', () => {
 
    window.setInterval( () => {
 
+   	console.log( new Date() );
+
    	let bk = document.getElementById('bk');
-		let bkclone = bk.cloneNode(true);
+   	let bkclone = bk.cloneNode(true);
 		bk.parentNode.replaceChild(bkclone, bk);
    
    }, 1000 * 60 * 10 );
