@@ -50,10 +50,8 @@ function main() {
 
   } else {
 
-    document.getElementById('welcomeButtonYes')
-      .addEventListener( 'animationend', () => document.getElementById('welcomeButtonYes').focus(), {once: true} );
-      
     moveIn( document.getElementById('welcome') );
+    document.getElementById('welcomeButtonYes').focus();
 
   };
 
