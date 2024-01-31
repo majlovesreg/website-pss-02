@@ -16,6 +16,6 @@ window.addEventListener('load', () => {
    	let bkclone = bk.cloneNode(true);
 		bk.parentNode.replaceChild(bkclone, bk);
    
-   }, 1000 * 60 * 15 );
+   }, 1000 * 60 * 60 );
 
 }, false);
