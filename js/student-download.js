@@ -42,7 +42,7 @@ function main() {
 
   if ( Date.now() < dates.startDate ) {
 
-    moveIn(document.getElementById('beforeStartDate'));
+    moveIn( document.getElementById('beforeStartDate') );
 
   } else if ( Date.now() > dates.endDate ) {
 
@@ -51,6 +51,8 @@ function main() {
   } else {
 
     moveIn( document.getElementById('welcome') );
+    document.getElementById('welcomeButtonYes')
+      .addEventListener( 'animationend', () => document.getElementById('welcomeButtonYes').focus(), {once: true} );
 
   };
 
@@ -228,7 +230,7 @@ function loadInitialListeners() {
   document.getElementById('beforeStartDateButton')
     .addEventListener( 'click', () => window.location.assign('https://www.jw.org/') );
 
-  document.getElementById('welcomeButtonYes').focus();  
+  // document.getElementById('welcomeButtonYes').focus();
 
   document.getElementById('welcomeButtonYes')
     .addEventListener( 'click', () => question(1, 'welcome') );
@@ -474,7 +476,7 @@ function verifyData(json) {
 
       loadBookLanguages(files, selectionLanguage);
 
-      moveIn(document.getElementById('authOK'))
+      moveIn( document.getElementById('authOK') );
 
       // Set onchange listeners for selectionLanguage, selectionFormat, and buttonDownload  
       selectionLanguage.addEventListener('change', () => {
