@@ -2,10 +2,18 @@
 // Variables //
 ///////////////
 
-var dates = {};
-dates.startDate = Date.parse('2024-03-08T00:00:00.000+08:00');
-// dates.startDate = Date.parse('2024-01-08T00:00:00.000+08:00');
-dates.endDate = Date.parse('2024-04-20T16:00:00.000+08:00');
+var dates = {
+  "kindness": {
+    // "startDate": Date.parse('2023-03-08T00:00:00.000+08:00'),
+    // "endDate":   Date.parse('2023-04-13T16:00:00.000+08:00')
+    "startDate": Date.parse('2024-03-08T00:00:00.000+08:00'),
+    "endDate":   Date.parse('2024-04-13T16:00:00.000+08:00')
+  },
+  "goodness": {
+    "startDate": Date.parse('2024-03-15T00:00:00.000+08:00'),
+    "endDate":   Date.parse('2024-04-20T16:00:00.000+08:00')
+  }
+};
 
 var languageData = 'data/2024_EN.json';
 var submitURL = 'https://www.majlovesreg.one/dynamic/pss/dl'
@@ -40,13 +48,23 @@ function main() {
 
   loadInitialListeners();
 
-  if ( Date.now() < dates.startDate ) {
+  let classCode = window.location.pathname.split('/').pop().split('.').shift();
+
+  if ( ! dates[classCode] ) {
+
+    window.location.replace('https://www.jw.org/');
+    return;
+
+  };
+
+  if ( Date.now() < dates[classCode].startDate ) {
 
     moveIn( document.getElementById('beforeStartDate') );
 
-  } else if ( Date.now() > dates.endDate ) {
+  } else if ( Date.now() > dates[classCode].endDate ) {
 
     window.location.replace('https://www.jw.org/');
+    return;
 
   } else {
 
