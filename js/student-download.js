@@ -451,7 +451,7 @@ async function postData(url, name, code) {
 
   name = name.replace(/\s\s+/g, ' ').trim().toUpperCase();
   code = code.replace(/\s+/g, '').toUpperCase();
-  let basename = window.location.pathname.split('/').pop().split('.').shift().toUpperCase();
+  let classID = window.location.pathname.split('/').pop().split('.').shift().toUpperCase();
 
   try {
 
@@ -467,7 +467,7 @@ async function postData(url, name, code) {
       referrerPolicy: "no-referrer-when-downgrade",
 
       body: JSON.stringify({
-        basename,
+        classID,
         name,
         code
       })
