@@ -496,7 +496,7 @@ function verifyData(json) {
       let selectionFormat = document.getElementById('authOKSelectionFormat');
       let buttonDownload = document.getElementById('authOKButtonDownload');
 
-      loadBookLanguages(files, selectionLanguage, selectionFormat);
+      loadBookLanguages(files, selectionLanguage, selectionFormat, buttonDownload);
 
       moveIn( document.getElementById('authOK') );
 
@@ -579,7 +579,7 @@ function verifyData(json) {
 };
 
 
-function loadBookLanguages(files, selectionLanguage, selectionFormat) {
+function loadBookLanguages(files, selectionLanguage, selectionFormat, buttonDownload) {
 
   let languageCode = [];
 
@@ -605,6 +605,7 @@ function loadBookLanguages(files, selectionLanguage, selectionFormat) {
   
     selectionLanguage.value = languageCode[0];
     selectionFormat.disabled = false;
+    loadBookFormats(files, selectionLanguage, selectionFormat, buttonDownload);
   
   };
 
@@ -631,6 +632,7 @@ function loadBookFormats(files, selectionLanguage, selectionFormat, buttonDownlo
   
     selectionFormat.value = formats[0];
     buttonDownload.disabled = false;
+    loadButtonDownload(files, selectionLanguage, selectionFormat, buttonDownload);
   
   };
 
