@@ -606,7 +606,7 @@ function loadBookLanguages(files, selectionLanguage) {
 
 function loadBookFormats(files, selectionLanguage, selectionFormat) {
 
-  let formats = files.filter( obj => Object.keys(obj)[0] === selectionLanguage.value ).map( obj => obj[selectionLanguage.value].format );
+  let formats = files.filter( obj => obj.language === selectionLanguage.value ).map( obj => obj.format );
 
   for ( let i = 0; i < formats.length; i++ ) {
 
@@ -626,8 +626,8 @@ function loadBookFormats(files, selectionLanguage, selectionFormat) {
 function loadButtonDownload(files, selectionLanguage, selectionFormat, buttonDownload) {
 
   let dl = files.filter( obj => {
-    return Object.keys(obj)[0] === selectionLanguage.value &&
-    obj[selectionLanguage.value].format === selectionFormat.value } )[0][selectionLanguage.value];
+    return obj.language === selectionLanguage.value && obj.format === selectionFormat.value
+  } )[0];
 
   buttonDownload.innerHTML = downloadText + ' ' + dl.format + '<br>' + dl.title;
 
