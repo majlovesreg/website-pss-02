@@ -584,14 +584,14 @@ function loadBookLanguages(files, selectionLanguage) {
   let languageCode = [];
 
   // Get language codes
-  for ( let i = 0; i < files.length; i++ ) languageCode.push( Object.keys(files[i])[0] );
+  for ( let i = 0; i < files.length; i++ ) languageCode.push( files[i].langCode );
 
   // Just get unique values
   languageCode = [ ...new Set(languageCode) ];
 
   for ( let i = 0; i < languageCode.length; i++ ) {
 
-    let language = files.filter( obj => Object.keys(obj)[0] === languageCode[i] )[0][languageCode[i]].language; // Use node
+    let language = files.filter( obj => obj.langCode === languageCode[i] )[0].language;
 
     let option = document.createElement("option");
     option.innerHTML = language;
