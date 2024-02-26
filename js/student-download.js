@@ -12,6 +12,10 @@ var dates = {
   "goodness": {
     "startDate": Date.parse('2024-03-15T00:00:00.000+08:00'),
     "endDate":   Date.parse('2024-04-20T16:00:00.000+08:00')
+  },
+  "testing": {
+    "startDate": Date.parse('2024-02-15T00:00:00.000+08:00'),
+    "endDate":   Date.parse('2024-04-20T16:00:00.000+08:00')
   }
 };
 
