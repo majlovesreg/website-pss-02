@@ -496,7 +496,7 @@ function verifyData(json) {
       let selectionFormat = document.getElementById('authOKSelectionFormat');
       let buttonDownload = document.getElementById('authOKButtonDownload');
 
-      loadBookLanguages(files, selectionLanguage);
+      loadBookLanguages(files, selectionLanguage, selectionFormat);
 
       moveIn( document.getElementById('authOK') );
 
@@ -506,7 +506,7 @@ function verifyData(json) {
         while ( selectionFormat.children.length > 1 ) selectionFormat.removeChild( selectionFormat.lastChild );
         selectionFormat.selectedIndex = 0;      
 
-        loadBookFormats(files, selectionLanguage, selectionFormat);
+        loadBookFormats(files, selectionLanguage, selectionFormat, buttonDownload);
 
         buttonDownload.disabled = true;
         
@@ -579,7 +579,7 @@ function verifyData(json) {
 };
 
 
-function loadBookLanguages(files, selectionLanguage) {
+function loadBookLanguages(files, selectionLanguage, selectionFormat) {
 
   let languageCode = [];
 
@@ -601,10 +601,17 @@ function loadBookLanguages(files, selectionLanguage) {
   
   };
 
+  if (languageCode.length == 1) {
+  
+    selectionLanguage.value = languageCode[0];
+    selectionFormat.disabled = false;
+  
+  };
+
 };
 
 
-function loadBookFormats(files, selectionLanguage, selectionFormat) {
+function loadBookFormats(files, selectionLanguage, selectionFormat, buttonDownload) {
 
   let formats = files.filter( obj => obj.langCode === selectionLanguage.value ).map( obj => obj.format );
 
@@ -619,6 +626,13 @@ function loadBookFormats(files, selectionLanguage, selectionFormat) {
   };
 
   selectionFormat.disabled = false;
+
+  if (formats.length == 1) {
+  
+    selectionFormat.value = formats[0];
+    buttonDownload.disabled = false;
+  
+  };
 
 };
 
