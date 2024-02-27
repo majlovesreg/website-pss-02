@@ -4,8 +4,6 @@
 
 var dates = {
   "kindness": {
-    // "startDate": Date.parse('2023-03-08T00:00:00.000+08:00'),
-    // "endDate":   Date.parse('2023-04-13T16:00:00.000+08:00')
     "startDate": Date.parse('2024-03-08T00:00:00.000+08:00'),
     "endDate":   Date.parse('2024-04-13T16:00:00.000+08:00')
   },
