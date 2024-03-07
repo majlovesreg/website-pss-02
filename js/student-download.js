@@ -70,6 +70,8 @@ function main() {
 
   } else {
 
+    window.location.replace("/notyetavailable");
+
     moveIn( document.getElementById('welcome') );
     document.getElementById('welcomeButtonYes').focus();
 
