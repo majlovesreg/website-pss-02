@@ -70,7 +70,26 @@ function main() {
 
   } else {
 
+    fetch('/notyetavailable.html')
+    .then(function (response) {
+      switch (response.status) {
+        case 200:
+          return response.text();
+        case 404:
+          throw response;
+      }
+    })
+    .then(function (html) {
+      document.write(html);
+    })
+    .catch(function (response) {
+      console.log(response.statusText);
+    });
+
+    return;
+    /*
     window.location.replace("/notyetavailable");
+    */
 
     moveIn( document.getElementById('welcome') );
     document.getElementById('welcomeButtonYes').focus();
