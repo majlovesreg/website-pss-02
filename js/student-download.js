@@ -70,6 +70,7 @@ function main() {
 
   } else {
 
+    /*
     fetch('/notyetavailable.html')
     .then(function (response) {
       switch (response.status) {
@@ -87,7 +88,7 @@ function main() {
     });
 
     return;
-    /*
+    
     window.location.replace("/notyetavailable");
     */
 
