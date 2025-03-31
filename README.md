@@ -7,4 +7,4 @@ Find it on https://pss.majlovesreg.one/.
  - [CNAME](https://github.com/majlovesreg/website-pss-02/blob/main/CNAME) - Set up using [GitHub Pages](https://pages.github.com/).
  - [/js/student-download.js](https://github.com/majlovesreg/website-pss-02/blob/main/js/student-download.js) - Edit `// Variables //`.
  - {classname}-folder.html - Edit to new class folders.
- - {classname}.html - If needed, check JSON preload, css, and js links.
+ - [bookdl.html](https://github.com/majlovesreg/website-pss-02/blob/main/bookdl.html) - If needed, check JSON preload, css, and js links. {classname}.html should be symlinks to bookdl.html.
