@@ -40,7 +40,7 @@ button.languageSelected, button.languageSelected:hover, button.languageSelected:
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Noto Sans', sans-serif;
   font-size: 30px;
   padding: 0;
 }
@@ -158,7 +158,7 @@ input[type=text]:focus {
 /* https://getcssscan.com/css-buttons-examples */
 
 button {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Noto Sans', sans-serif;
   background-image: linear-gradient(#42A1EC, #0070C9);
   border: 1px solid #0077CC;
   border-radius: 4px;
