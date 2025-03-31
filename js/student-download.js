@@ -3,17 +3,17 @@
 ///////////////
 
 var dates = {
-  "kindness": {
-    "startDate": Date.parse('2024-03-08T00:00:00.000+08:00'),
-    "endDate":   Date.parse('2024-04-13T16:00:00.000+08:00')
+  "humility": {
+    "startDate": Date.parse('2025-04-19T00:00:00.000+08:00'),
+    "endDate":   Date.parse('2025-05-24T16:00:00.000+08:00')
   },
-  "goodness": {
-    "startDate": Date.parse('2024-03-15T00:00:00.000+08:00'),
-    "endDate":   Date.parse('2024-04-20T16:00:00.000+08:00')
+  "loyallove": {
+    "startDate": Date.parse('2025-04-26T00:00:00.000+08:00'),
+    "endDate":   Date.parse('2025-05-31T16:00:00.000+08:00')
   },
   "testing": {
-    "startDate": Date.parse('2024-02-15T00:00:00.000+08:00'),
-    "endDate":   Date.parse('2024-04-20T16:00:00.000+08:00')
+    "startDate": Date.parse('2025-02-15T00:00:00.000+08:00'),
+    "endDate":   Date.parse('2025-04-20T16:00:00.000+08:00')
   }
 };
 
