@@ -17,7 +17,7 @@ var dates = {
   }
 };
 
-var languageData = 'data/2024_EN.json';
+var languageData = 'data/EN.json';
 var submitURL = 'https://www.majlovesreg.one/dynamic/pss/dl'
 
 var LOCALE = 'en';
