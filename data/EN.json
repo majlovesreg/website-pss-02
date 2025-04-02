@@ -4,7 +4,7 @@
     "localeName": "English",
     "pageTitle": "PSS Textbook Download",
     "dateCheck": {
-      "beforeStartDateMessage": "Excited?<br>Of course! 😄<br><br>You may download your PSS textbooks <strong>one month</strong> before your class begins.<br><br>In the meantime, prayer, mediation, and daily Bible reading will help prepare our hearts.",
+      "beforeStartDateMessage": "Excited?<br>Of course! 😄<br><br>You may download your PSS textbooks <b>one month</b> before your class begins.<br><br>In the meantime, prayer, mediation, and daily Bible reading will help prepare our hearts.",
       "beforeStartDateButton": "Got it!"
     },
     "welcome": {
