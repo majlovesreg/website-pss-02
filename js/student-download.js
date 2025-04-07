@@ -18,7 +18,7 @@ var dates = {
 };
 
 var languageData = 'data/EN.json';
-var submitURL = 'https://pss.majlovesreg.one/download'
+var submitURL = '/download'
 
 var LOCALE = 'en';
 var DATASOURCE = [];
