@@ -14,7 +14,7 @@
     },
     "notWelcome": {
       "message": "Thanks for dropping by.\nSee you next time when it’s your turn. 🙂",
-      "notWelcomeButtonOK": "Sure, looking forward to it"
+      "notWelcomeButtonOK": "Looking forward to it"
     },
     "authFailed": {
       "msgError": "🤔 Looks like there was an error in what you submitted.",
