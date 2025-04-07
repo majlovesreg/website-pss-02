@@ -17,7 +17,7 @@ var dates = {
   }
 };
 
-var languageData = 'data/EN.json';
+var languageData = '/data/EN.json';
 var submitURL = '/download'
 
 var LOCALE = 'en';
